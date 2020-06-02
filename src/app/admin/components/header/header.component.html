@@ -1,0 +1,16 @@
+<div class="navbar">
+  <div class="container">
+    <div class="container__left-side">
+      <span class="logo" [routerLink]="['/']">Admin Panel</span>
+      <span class="nav-link" [routerLink]="['/']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="router-link-active" >About</span>
+      <span class="nav-link" [routerLink]="['/articles']" routerLinkActive="router-link-active" >Articles</span>
+      <span class="nav-link" [routerLink]="['/admin']" routerLinkActive="router-link-active" >Admin</span>
+    </div>
+    <div class="space"></div>
+    <div class="container__right-side">
+      <span class="nav-link" [routerLink]="['/sign-in']" routerLinkActive="router-link-active" >Sign In</span>
+      <span class="nav-link" [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >Sign Up</span>
+      <span class="nav-link">Logout</span>
+    </div>
+  </div>
+</div>

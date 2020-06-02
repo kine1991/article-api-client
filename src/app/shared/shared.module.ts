@@ -7,11 +7,10 @@ import { AngularMaterialModule } from './modules/angular-material.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
-
 @NgModule({
   declarations: [
     SpinnerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -21,13 +20,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AngularMaterialModule,
   ],
   exports: [
-    CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
     SpinnerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ]
 })
 export class SharedModule { }
