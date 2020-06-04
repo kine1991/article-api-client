@@ -1,1 +1,17 @@
-<p>articles works!</p>
+<div class="articles-container" *ngIf="articles; else spinnerRef">
+  <h1>Articles</h1>
+  <div class="articles">
+    <ng-container *ngFor="let article of articles">
+      <mat-divider></mat-divider>
+      <site-card [article]="article"></site-card>
+    </ng-container>
+  </div>  
+</div>
+<ng-template #spinnerRef>
+  <div class="loading-container">
+    <shared-spinner></shared-spinner>
+  </div>
+</ng-template>
+
+
+<!-- {{ articles | json }} -->

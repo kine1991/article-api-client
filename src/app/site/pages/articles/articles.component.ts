@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from '../../services/site.service';
 
 @Component({
   selector: 'app-articles',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
+  public articles;
 
-  constructor() { }
+  constructor(
+    private siteService: SiteService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const params = {
+      fields: '-content',
+      limit: 10
+    }
+    this.siteService.getArticles(params).subscribe(article => {
+      console.log('articles', article.data.articles);
+      this.articles = article.data.articles
+    });
+
   }
 
 }

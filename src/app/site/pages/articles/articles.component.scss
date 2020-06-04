@@ -1,0 +1,13 @@
+.articles-container {
+  max-width: 860px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.loading-container {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

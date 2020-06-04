@@ -1,1 +1,9 @@
-<p>article works!</p>
+<div class="article-container" *ngIf="true; else spinnerRef">
+  article
+</div>
+
+<ng-template #spinnerRef>
+  <div class="loading-container">
+    <shared-spinner></shared-spinner>
+  </div>
+</ng-template>
