@@ -1,0 +1,20 @@
+.item {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.5;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.selected-item {
+  color: orange;
+}
+
+.item:focus {
+  outline: 0;
+  // background-color: black;
+}

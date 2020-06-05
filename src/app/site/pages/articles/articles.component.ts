@@ -8,6 +8,7 @@ import { SiteService } from '../../services/site.service';
 })
 export class ArticlesComponent implements OnInit {
   public articles;
+  public count;
 
   constructor(
     private siteService: SiteService
@@ -19,8 +20,11 @@ export class ArticlesComponent implements OnInit {
       limit: 10
     }
     this.siteService.getArticles(params).subscribe(article => {
-      console.log('articles', article.data.articles);
       this.articles = article.data.articles
+    });
+
+    this.siteService.getCountArticles().subscribe(article => {
+      this.count = article.count;
     });
 
   }

@@ -3,18 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 export interface GetArticlesResponse {
+  results: number,
+  status: string
   data: {
     articles: [Article]
   },
-  results: number,
-  status: string
 }
 
 export interface GetArticleResponse {
+  status: string,
   data: {
     article: Article
   },
-  status: string
+}
+
+export interface GetFilterResponse {
+  status: string,
+  data: {
+    categories: [string],
+    authors: [string],
+    priorities: [string]
+  }
 }
 
 export interface Article {
@@ -48,5 +57,18 @@ export class SiteService {
 
   getArticle (id) {
     return this.http.get<GetArticleResponse>(`${environment.url}/articles/${id}`);
+  }
+
+  getCountArticles(params?) {
+    return this.http.get<{count: number}>(`${environment.url}/articles/count`, { params });
+  }
+
+  getArticlesByCategory({ category, page, limit }) {
+    console.log(category, page, limit);
+    return this.http.get<GetArticlesResponse>(`${environment.url}/articles/category/${category}/${page}/${limit}`)
+  }
+
+  getFilter () {
+    return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
   }
 }

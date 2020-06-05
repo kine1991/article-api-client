@@ -7,6 +7,8 @@
   font-weight: 500;
   transition: all 0.3s;
   cursor: pointer;
+  text-transform: uppercase;
+
 
   &:hover {
     color: orange;
@@ -27,8 +29,8 @@
 
 .name-date {
   color: gray;
-  font-size: 11px;
-  font-weight: 200;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .article-content {
@@ -65,4 +67,9 @@
     color: orange;
     letter-spacing: 2.4px;
   }
+}
+
+.helper-highlight {
+  color: orange;
+  cursor: pointer;
 }

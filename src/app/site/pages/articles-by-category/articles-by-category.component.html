@@ -1,0 +1,20 @@
+<div *ngIf="category" class="category">{{ category }}</div>
+<div class="article-by-category-container" *ngIf="articles; else spinnerRef">
+  <div class="articles">
+    <ng-container *ngFor="let article of articles">
+      <mat-divider></mat-divider>
+      <site-card [article]="article"></site-card>
+    </ng-container>
+  </div>
+  <div class="categories">
+    <site-filter [filterType]="'categories'"></site-filter>
+  </div>
+</div>
+
+<ng-template #spinnerRef>
+  <ng-template #spinnerRef>
+    <div class="loading-container">
+      <shared-spinner></shared-spinner>
+    </div>
+  </ng-template>
+</ng-template>

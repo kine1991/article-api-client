@@ -1,7 +1,7 @@
 <div class="article">
-  <div [routerLink]="['/articles', article.id]" class="category">{{ article.category }}</div>
+  <div [routerLink]="['/term/category', article.category]" class="category">{{ article.category }}</div>
   <div [routerLink]="['/articles', article.id]" class="title">{{ article.title }}</div>
-  <div class="name-date">Post by John on {{ article.createdAt | date }}</div>
+  <div class="name-date">Post by <span class="helper-highlight" [routerLink]="['/users', article.publisher.id]">{{ article.publisher.name }}</span> on {{ article.createdAt | date }}. Author: <span class="helper-highlight" [routerLink]="['/term/author', article.author]">{{ article.author }}</span></div>
   <div class="article-content">
     <div class="article-content__left">
       <img class="image" [src]="article.imageUrl" alt="">

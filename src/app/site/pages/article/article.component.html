@@ -1,13 +1,13 @@
 <div class="article-container" *ngIf="article; else spinnerRef">
-  <div class="category">Category: <span class="helper-highlight">{{ article.category }}</span></div>
+  <div class="category">Category: <span [routerLink]="['/term/category', article.category]" class="helper-highlight">{{ article.category }}</span></div>
   <div class="title">{{ article.title }}</div>
-  <div class="author">Author: <span class="helper-highlight">{{ article.author }}</span></div>
+  <div class="author">Author: <span [routerLink]="['/term/author', article.author]" class="helper-highlight">{{ article.author }}</span></div>
   <div class="publisher">
     <div class="publisher__image">
       <img [src]="article.publisher.photo" [alt]="article.publisher.name" class="publisher-img">
     </div>
     <div class="publisher__content">
-      <div class="name">Publisher: <span class="helper-highlight">{{ article.publisher.name }}</span></div>
+      <div class="name">Publisher: <span [routerLink]="['/users', article.publisher.id]" class="helper-highlight">{{ article.publisher.name }}</span></div>
       <div class="date">{{ article.createdAt | date }}</div>
     </div>
   </div>

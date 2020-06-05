@@ -1,0 +1,36 @@
+.category {
+  background: #efefef;
+  height: 100px;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 200;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.article-by-category-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.articles {
+  flex: 4;
+  padding-top: 2rem;
+}
+
+.categories {
+  flex: 1;
+  padding: 1rem;
+  padding-top: 4rem;
+  padding-left: 4rem;
+  // background: palegoldenrod;
+}
+
+.loading-container {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
