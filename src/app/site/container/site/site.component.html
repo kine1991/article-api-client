@@ -1,0 +1,19 @@
+<site-header></site-header>
+<div class="container" [ngClass]="{'c1': selectedColor === 'white', 'c2': selectedColor === 'silver', 'c3': selectedColor === 'hazelnut', 'c4': selectedColor === 'dark'}">
+  <router-outlet></router-outlet>
+
+  <div class="fixed-btn">
+    <button *ngIf="!showPalette" (click)="showPalette = true" mat-mini-fab color="primary">
+      <mat-icon>palette</mat-icon>
+    </button>
+    <button *ngIf="showPalette" (click)="showPalette = false" mat-mini-fab color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="palette" *ngIf="showPalette">
+    <div class="palette__item c1" (click)="selectedColor = 'white'" [ngClass]="{'selected-color': selectedColor === 'white'}">c1</div>
+    <div class="palette__item c2" (click)="selectedColor = 'silver'" [ngClass]="{'selected-color': selectedColor === 'silver'}">c2</div>
+    <div class="palette__item c3" (click)="selectedColor = 'hazelnut'" [ngClass]="{'selected-color': selectedColor === 'hazelnut'}">c3</div>
+    <div class="palette__item c4" (click)="selectedColor = 'dark'" [ngClass]="{'selected-color': selectedColor === 'dark'}">c4</div>
+  </div>
+</div>

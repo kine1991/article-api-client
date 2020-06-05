@@ -1,5 +1,29 @@
-<div class="article-container" *ngIf="true; else spinnerRef">
-  article
+<div class="article-container" *ngIf="article; else spinnerRef">
+  <div class="category">Category: <span class="helper-highlight">{{ article.category }}</span></div>
+  <div class="title">{{ article.title }}</div>
+  <div class="author">Author: <span class="helper-highlight">{{ article.author }}</span></div>
+  <div class="publisher">
+    <div class="publisher__image">
+      <img [src]="article.publisher.photo" [alt]="article.publisher.name" class="publisher-img">
+    </div>
+    <div class="publisher__content">
+      <div class="name">Publisher: <span class="helper-highlight">{{ article.publisher.name }}</span></div>
+      <div class="date">{{ article.createdAt | date }}</div>
+    </div>
+  </div>
+  <div class="priority">Priority: <span>{{ article.priority }}</span></div>
+  <div class="article-image">
+    <img [src]="article.imageUrl" alt="" class="artile-img">
+  </div>
+  <div class="content" [ngClass]="{'large-text': largeText}">{{ article.content }}</div>
+  <div class="fixed-btn">
+    <button *ngIf="!largeText" (click)="largeText = true" mat-mini-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button *ngIf="largeText" (click)="largeText = false" mat-mini-fab color="primary">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
 </div>
 
 <ng-template #spinnerRef>

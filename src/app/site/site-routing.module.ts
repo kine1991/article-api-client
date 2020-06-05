@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './container/admin/admin.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { ArticleComponent } from './pages/article/article.component';
+import { SiteComponent } from './container/site/site.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,
+    component: SiteComponent,
     children: [
       {
         path: 'articles',

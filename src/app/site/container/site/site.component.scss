@@ -1,0 +1,47 @@
+.c1 {
+  background: white
+
+}
+.c2 {
+  background: whitesmoke;
+}
+
+.c3 {
+  background: #F1E9D6;
+}
+
+.c4 {
+  // background: #3a3e41;
+  background: #303436;
+  color: #A9B7C6;
+
+}
+
+.selected-color {
+  border: 1px solid #5cb85c;
+}
+
+.container {
+  position: relative;
+  // color: #6a737c;
+  // color: #bbc0c4;
+  
+}
+
+.palette {
+  position: fixed;
+  right: 3rem;
+  top: 5rem;
+
+  &__item {
+    // border: 1px black solid;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.fixed-btn {
+  position: fixed;
+  right: 3rem;
+  bottom: 2rem;
+}
