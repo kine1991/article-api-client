@@ -15,13 +15,18 @@ import { UserComponent } from './pages/user/user.component';
 import { FilterComponent } from './components/filter/filter.component';
 
 
+
 @NgModule({
   declarations: [
     SiteComponent, 
     HeaderComponent, 
     CardComponent, 
     ArticlesComponent, 
-    ArticleComponent, ArticlesByCategoryComponent, ArticlesByAuthorComponent, UsersComponent, UserComponent, FilterComponent,
+    ArticleComponent, 
+    ArticlesByCategoryComponent, 
+    ArticlesByAuthorComponent, 
+    UsersComponent, UserComponent, 
+    FilterComponent,
   ],
   imports: [
     CommonModule,

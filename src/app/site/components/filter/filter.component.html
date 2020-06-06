@@ -1,3 +1,3 @@
 <ng-container  *ngFor="let item of listOfFilterItems">
-  <div class="item" [routerLink]="['/term/category', item]" [ngClass]="{'selected-item': selectedItem === item.toLowerCase()}" >{{item}}</div>
+  <div class="item" [routerLink]="['/term', partOfRoute, item]" [ngClass]="{'selected-item': selectedItem === item.toLowerCase()}" >{{item}}</div>
 </ng-container>

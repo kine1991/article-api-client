@@ -68,6 +68,11 @@ export class SiteService {
     return this.http.get<GetArticlesResponse>(`${environment.url}/articles/category/${category}/${page}/${limit}`)
   }
 
+  getArticlesByAuthors({ author, page, limit }) {
+    // console.log(author, page, limit );
+    return this.http.get<GetArticlesResponse>(`${environment.url}/articles/author/${author}/${page}/${limit}`)
+  }
+
   getFilter () {
     return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
   }

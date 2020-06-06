@@ -27,14 +27,8 @@ export class ArticlesByCategoryComponent implements OnInit {
         return this.siteService.getArticlesByCategory({ category: params.get('categoryName'), page: params.get('page'), limit: params.get('limit') });
       })
     ).subscribe(article => {
+      console.log(article);
       this.articles = article.data.articles;
-    })
-    // this.route.paramMap.subscribe(({ params }: Params) => {
-      // this.route.paramMap.pipe(
-      //   switchMap((params: Params) => {
-      //     return this.postService.fetchPostBySlug(params.get('slug'));
-      //   })
-      // )
+    });
   }
-
 }

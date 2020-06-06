@@ -31,6 +31,10 @@
 .helper-highlight {
   color: orange;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .priority {

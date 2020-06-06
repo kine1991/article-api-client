@@ -7,6 +7,7 @@ import { ArticlesByCategoryComponent } from './pages/articles-by-category/articl
 import { ArticlesByAuthorComponent } from './pages/articles-by-author/articles-by-author.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserComponent } from './pages/user/user.component';
+import { CardComponent } from './components/card/card.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,11 @@ const routes: Routes = [
         component: ArticleComponent
       },
       // {
-      //   path: 'term/category'
+      //   path: 'term/author',
+      //   component: ArticlesByAuthorComponent,
+      //   children: [
+      //     { path: ':authorName', component:  ArticlesHelperComponent }
+      //   ]
       // },
       {
         path: 'term/category/:categoryName',
@@ -39,6 +44,14 @@ const routes: Routes = [
       },
       {
         path: 'term/author/:authorName',
+        component: ArticlesByAuthorComponent
+      },
+      {
+        path: 'term/author/:authorName/:page',
+        component: ArticlesByAuthorComponent
+      },
+      {
+        path: 'term/author/:authorName/:limit',
         component: ArticlesByAuthorComponent
       },
       {

@@ -1,8 +1,7 @@
-<div *ngIf="category" class="category">{{ category }}</div>
+<div *ngIf="category" class="category">Category: {{ category }}</div>
 <div class="article-by-category-container" *ngIf="articles; else spinnerRef">
   <div class="articles">
     <ng-container *ngFor="let article of articles">
-      <mat-divider></mat-divider>
       <site-card [article]="article"></site-card>
     </ng-container>
   </div>

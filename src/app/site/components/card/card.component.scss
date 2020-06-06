@@ -13,6 +13,10 @@
   &:hover {
     color: orange;
   }
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .title {
@@ -24,6 +28,10 @@
 
   &:hover {
     color: orange;
+  }
+
+  &:focus {
+    outline: 0;
   }
 }
 
@@ -67,9 +75,17 @@
     color: orange;
     letter-spacing: 2.4px;
   }
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .helper-highlight {
   color: orange;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 }

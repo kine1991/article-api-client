@@ -11,6 +11,7 @@ export class FilterComponent implements OnInit {
   @Input() filterType;
   public listOfFilterItems;
   public selectedItem;
+  public partOfRoute;
 
   constructor(
     private siteService: SiteService,
@@ -19,7 +20,14 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: Params) => {
-      this.selectedItem = params.get('categoryName').toLowerCase();
+      // console.log('filterType', this.filterType)
+      if (this.filterType === 'categories') {
+        this.partOfRoute = 'category';
+        this.selectedItem = params.get('categoryName').toLowerCase();
+      } else if (this.filterType === 'authors') {
+        this.partOfRoute = 'author';
+        this.selectedItem = params.get('authorName').toLowerCase();
+      }
     });
 
     this.siteService.getFilter().subscribe(filter => {
