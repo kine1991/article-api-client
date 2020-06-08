@@ -1,10 +1,16 @@
 <div class="articles-container" *ngIf="articles; else spinnerRef">
-  <h1>Articles: {{ count }}</h1>
+  <h1>Articles: {{ limit }}</h1>
   <div class="articles">
     <ng-container *ngFor="let article of articles">
       <mat-divider></mat-divider>
       <site-card [article]="article"></site-card>
     </ng-container>
+    <mat-paginator *ngIf="articles" [length]="limit"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="[10, 20, 50, 100]"
+            [pageIndex]="page - 1"
+            (page)="pageChange($event)">
+    </mat-paginator>
   </div>  
 </div>
 <ng-template #spinnerRef>

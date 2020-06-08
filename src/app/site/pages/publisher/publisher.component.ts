@@ -30,11 +30,9 @@ export class PublisherComponent implements OnInit {
       switchMap((params: Params) => {
         this.page = params.get('page') ? params.get('page') : 1;
         this.limit = params.get('limit') ? params.get('limit') : 20;
-        console.log(params.get('userId'))
         return this.siteService.getPublisher(params.get('userId'))
       })
     ).subscribe(publisher => {
-      console.log('publisher', publisher.data.user);
       this.publisher$.next(publisher.data.user);
       this.publisher = publisher.data.user;
     });
@@ -47,14 +45,13 @@ export class PublisherComponent implements OnInit {
       this.articles = article.data.articles;
       this.allResults = article.allResults;
       this.allPages = Math.ceil(article.allResults/this.limit);
-      console.log('$$$', article);
     });
   }
 
   prev() {
     let userId = this.route.snapshot.paramMap.get('userId');
-    let page = this.route.snapshot.paramMap.get('page');
-    let limit = this.route.snapshot.paramMap.get('limit');
+    // let page = this.route.snapshot.paramMap.get('page');
+    // let limit = this.route.snapshot.paramMap.get('limit');
 
     this.page = +this.page - 1;
     this.router.navigate(['publishers', userId, this.page, this.limit]); 
@@ -62,8 +59,8 @@ export class PublisherComponent implements OnInit {
 
   next() {
     let userId = this.route.snapshot.paramMap.get('userId');
-    let page = this.route.snapshot.paramMap.get('page');
-    let limit = this.route.snapshot.paramMap.get('limit');
+    // let page = this.route.snapshot.paramMap.get('page');
+    // let limit = this.route.snapshot.paramMap.get('limit');
 
     this.page = +this.page + 1;
     this.router.navigate(['publishers', userId, this.page, this.limit]);
