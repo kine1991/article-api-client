@@ -11,9 +11,9 @@
     </button>
   </div>
   <div class="palette" *ngIf="showPalette">
-    <div class="palette__item c1" (click)="selectedColor = 'white'" [ngClass]="{'selected-color': selectedColor === 'white'}">c1</div>
-    <div class="palette__item c2" (click)="selectedColor = 'silver'" [ngClass]="{'selected-color': selectedColor === 'silver'}">c2</div>
-    <div class="palette__item c3" (click)="selectedColor = 'hazelnut'" [ngClass]="{'selected-color': selectedColor === 'hazelnut'}">c3</div>
-    <div class="palette__item c4" (click)="selectedColor = 'dark'" [ngClass]="{'selected-color': selectedColor === 'dark'}">c4</div>
+    <div class="palette__item c1" (click)="selectedColor = 'white'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'white'}">c1</div>
+    <div class="palette__item c2" (click)="selectedColor = 'silver'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'silver'}">c2</div>
+    <div class="palette__item c3" (click)="selectedColor = 'hazelnut'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'hazelnut'}">c3</div>
+    <div class="palette__item c4" (click)="selectedColor = 'dark'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'dark'}">c4</div>
   </div>
 </div>

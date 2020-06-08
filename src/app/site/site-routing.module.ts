@@ -5,9 +5,8 @@ import { ArticleComponent } from './pages/article/article.component';
 import { SiteComponent } from './container/site/site.component';
 import { ArticlesByCategoryComponent } from './pages/articles-by-category/articles-by-category.component';
 import { ArticlesByAuthorComponent } from './pages/articles-by-author/articles-by-author.component';
-import { UsersComponent } from './pages/users/users.component';
-import { UserComponent } from './pages/user/user.component';
-import { CardComponent } from './components/card/card.component';
+import { PublishersComponent } from './pages/publishers/publishers.component';
+import { PublisherComponent } from './pages/publisher/publisher.component';
 
 
 const routes: Routes = [
@@ -23,13 +22,6 @@ const routes: Routes = [
         path: 'articles/:id',
         component: ArticleComponent
       },
-      // {
-      //   path: 'term/author',
-      //   component: ArticlesByAuthorComponent,
-      //   children: [
-      //     { path: ':authorName', component:  ArticlesHelperComponent }
-      //   ]
-      // },
       {
         path: 'term/category/:categoryName',
         component: ArticlesByCategoryComponent
@@ -55,12 +47,20 @@ const routes: Routes = [
         component: ArticlesByAuthorComponent
       },
       {
-        path: 'users',
-        component: UsersComponent
+        path: 'publishers',
+        component: PublishersComponent
       },
       {
-        path: 'users/:userId',
-        component: UserComponent
+        path: 'publishers/:userId',
+        component: PublisherComponent
+      },
+      {
+        path: 'publishers/:userId/:page',
+        component: PublisherComponent
+      },
+      {
+        path: 'publishers/:userId/:page/:limit',
+        component: PublisherComponent
       },
     ]
   }

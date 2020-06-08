@@ -10,9 +10,9 @@ import { SharedModule } from '../shared/shared.module';
 import { SiteComponent } from './container/site/site.component';
 import { ArticlesByCategoryComponent } from './pages/articles-by-category/articles-by-category.component';
 import { ArticlesByAuthorComponent } from './pages/articles-by-author/articles-by-author.component';
-import { UsersComponent } from './pages/users/users.component';
-import { UserComponent } from './pages/user/user.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { PublisherComponent } from './pages/publisher/publisher.component';
+import { PublishersComponent } from './pages/publishers/publishers.component';
 
 
 
@@ -25,8 +25,9 @@ import { FilterComponent } from './components/filter/filter.component';
     ArticleComponent, 
     ArticlesByCategoryComponent, 
     ArticlesByAuthorComponent, 
-    UsersComponent, UserComponent, 
-    FilterComponent,
+    FilterComponent, 
+    PublisherComponent, 
+    PublishersComponent,
   ],
   imports: [
     CommonModule,

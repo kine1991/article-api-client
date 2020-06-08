@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 
 export interface GetArticlesResponse {
   results: number,
+  allResults: number,
   status: string
   data: {
     articles: [Article]
@@ -24,6 +25,31 @@ export interface GetFilterResponse {
     authors: [string],
     priorities: [string]
   }
+}
+
+export interface GetPublishersResponse {
+  status: string
+  results: number,
+  allResults: number,
+  data: {
+    users: [Publisher]
+  },
+}
+
+export interface GetPublisherResponse {
+  status: string
+  data: {
+    user: Publisher
+  },
+}
+
+export interface Publisher {
+  id: string
+  role: string,
+  name: string,
+  email: string,
+  photo: string,
+  _id: string,
 }
 
 export interface Article {
@@ -73,7 +99,19 @@ export class SiteService {
     return this.http.get<GetArticlesResponse>(`${environment.url}/articles/author/${author}/${page}/${limit}`)
   }
 
-  getFilter () {
+  getArticlesByPublishers({ publisher, page, limit }) {
+    return this.http.get<GetArticlesResponse>(`${environment.url}/articles/publisher/${publisher}/${page}/${limit}`);
+  }
+
+  getFilter() {
     return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
+  }
+
+  getPublishers() {
+    return this.http.get<GetPublishersResponse>(`${environment.url}/users`);
+  }
+
+  getPublisher(id) {
+    return this.http.get<GetPublisherResponse>(`${environment.url}/users/${id}`);
   }
 }

@@ -1,0 +1,16 @@
+<div class="publishers-header">Publishers: {{ count }}</div>
+
+<div class="publishers-container">
+  <ng-container *ngFor="let publisher of publishers">
+    <div class="publisher" [routerLink]="['/publishers', publisher.id]">
+      <div class="publisher__left">
+        <p class="name">{{ publisher.name }}</p>
+        <p class="email">{{ publisher.email }}</p>
+      </div>
+      <div class="publisher__right">
+        <img [src]="publisher.photo" [alt]="publisher.name" class="publisher-image">
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { SiteService } from '../../services/site.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, delay } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 @Component({
@@ -12,6 +12,7 @@ import { EMPTY } from 'rxjs';
 export class ArticlesByCategoryComponent implements OnInit {
   public articles;
   public category;
+  public isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,13 +23,14 @@ export class ArticlesByCategoryComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap((params: Params) => {
-        console.log('params', params);
+        this.isLoading = true
         this.category = params.get('categoryName');
         return this.siteService.getArticlesByCategory({ category: params.get('categoryName'), page: params.get('page'), limit: params.get('limit') });
-      })
+      }),
+      delay(1000)
     ).subscribe(article => {
-      console.log(article);
       this.articles = article.data.articles;
+      this.isLoading = false;
     });
   }
 }
