@@ -39,8 +39,6 @@ export class ArticlesComponent implements OnInit {
   }
 
   pageChange(event) {
-    console.log(event)
-
     const navigationExtras: NavigationExtras = {
       queryParamsHandling: 'merge',
       queryParams: { 
@@ -48,8 +46,6 @@ export class ArticlesComponent implements OnInit {
         limit: +event.pageSize,
       },
     };
-
-    console.log(navigationExtras);
 
     this.router.navigate(['/articles'], navigationExtras);
   }

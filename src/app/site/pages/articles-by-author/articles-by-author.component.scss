@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+mat-paginator {
+  max-width: 960px;
+  padding: 2rem 0;
+}
 
 .articles-by-author-container {
   max-width: 960px;
@@ -35,4 +39,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+mat-paginator {
+  padding: 2rem 0;
+  max-width: 860px;
+  margin: 0 auto;
+  background: inherit;
+  // max-width: 960px;
+}
+
+.paginator-container {
+  background: whitesmoke;
+  
 }

@@ -9,6 +9,17 @@
     <site-filter [filterType]="'categories'"></site-filter>
   </div>
 </div>
+<div class="paginator-container">
+  <mat-paginator 
+    *ngIf="articles" 
+    [length]="limit"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 20, 50, 100]"
+    [pageIndex]="page - 1"
+    (page)="pageChange($event)">
+  </mat-paginator>
+
+</div>
 <ng-template #spinnerRef>
   <div class="loading-container">
     <shared-spinner></shared-spinner>

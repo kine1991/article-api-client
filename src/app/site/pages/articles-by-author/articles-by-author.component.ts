@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SiteService } from '../../services/site.service';
 import { switchMap } from 'rxjs/operators';
 
@@ -12,9 +12,14 @@ export class ArticlesByAuthorComponent implements OnInit {
   public articles;
   public author;
 
+  public limit = 20;
+  public page = 1;
+  public pageSize = 20;
+
   constructor(
     private siteService: SiteService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -27,5 +32,9 @@ export class ArticlesByAuthorComponent implements OnInit {
     ).subscribe(article => {
       this.articles = article.data.articles;
     });
+  }
+
+  pageChange(event) {
+    this.router.navigate(['/term/category', this.author, +event.pageIndex + 1, +event.pageSize]);
   }
 }
