@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-publisher',
+  selector: 'site-publisher',
   templateUrl: './publisher.component.html',
   styleUrls: ['./publisher.component.scss']
 })

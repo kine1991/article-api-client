@@ -11,7 +11,7 @@
     <div class="container__right-side">
       <span class="nav-link" [routerLink]="['/sign-in']" routerLinkActive="router-link-active" >Sign In</span>
       <span class="nav-link" [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >Sign Up</span>
-      <span class="nav-link">Logout</span>
+      <span (click)="logout()" class="nav-link">Logout</span>
     </div>
   </div>
 </div>

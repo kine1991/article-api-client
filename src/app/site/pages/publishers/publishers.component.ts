@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SiteService } from '../../services/site.service';
 
 @Component({
-  selector: 'app-publishers',
+  selector: 'site-publishers',
   templateUrl: './publishers.component.html',
   styleUrls: ['./publishers.component.scss']
 })

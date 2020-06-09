@@ -5,7 +5,7 @@ import { switchMap, delay } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 @Component({
-  selector: 'app-articles-by-category',
+  selector: 'site-articles-by-category',
   templateUrl: './articles-by-category.component.html',
   styleUrls: ['./articles-by-category.component.scss']
 })

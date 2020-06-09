@@ -4,7 +4,7 @@ import { NavigationExtras, ActivatedRoute, Router, Params } from '@angular/route
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-articles',
+  selector: 'site-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
@@ -23,16 +23,11 @@ export class ArticlesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      console.log(params);
-    });
-
     this.route.queryParams.pipe(
       switchMap((params: Params) => {
         return this.siteService.getArticles({ ...params, fields: '-content' })
       })
     ).subscribe(article => {
-      console.log('article', article)
       this.limit = article.allResults;
       this.articles = article.data.articles
     });;

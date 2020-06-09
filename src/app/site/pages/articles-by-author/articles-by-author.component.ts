@@ -4,7 +4,7 @@ import { SiteService } from '../../services/site.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-articles-by-author',
+  selector: 'site-articles-by-author',
   templateUrl: './articles-by-author.component.html',
   styleUrls: ['./articles-by-author.component.scss']
 })

@@ -7,6 +7,8 @@ import { ArticlesByCategoryComponent } from './pages/articles-by-category/articl
 import { ArticlesByAuthorComponent } from './pages/articles-by-author/articles-by-author.component';
 import { PublishersComponent } from './pages/publishers/publishers.component';
 import { PublisherComponent } from './pages/publisher/publisher.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,14 @@ const routes: Routes = [
     path: '',
     component: SiteComponent,
     children: [
+      {
+        path: 'sign-in',
+        component: SignInComponent
+      },
+      {
+        path: 'sign-up',
+        component: SignUpComponent
+      },
       {
         path: 'articles',
         component: ArticlesComponent

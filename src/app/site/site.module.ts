@@ -13,6 +13,8 @@ import { ArticlesByAuthorComponent } from './pages/articles-by-author/articles-b
 import { FilterComponent } from './components/filter/filter.component';
 import { PublisherComponent } from './pages/publisher/publisher.component';
 import { PublishersComponent } from './pages/publishers/publishers.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 
@@ -27,7 +29,9 @@ import { PublishersComponent } from './pages/publishers/publishers.component';
     ArticlesByAuthorComponent, 
     FilterComponent, 
     PublisherComponent, 
-    PublishersComponent,
+    PublishersComponent, 
+    SignInComponent, 
+    SignUpComponent,
   ],
   imports: [
     CommonModule,
