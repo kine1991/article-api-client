@@ -1,0 +1,26 @@
+.sign-up-container {
+  min-height: calc(100vh - 64px);
+}
+
+.spacing {
+  height: 3rem;
+}
+
+.sign-up {
+  width: 600px;
+  background: whitesmoke;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+}
+
+button {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

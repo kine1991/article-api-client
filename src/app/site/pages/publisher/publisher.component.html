@@ -16,16 +16,20 @@
   <ng-container *ngFor="let article of articles">
     <site-card [article]="article"></site-card>
   </ng-container>
-
-  <div class="paginator">
-    <div class="btn-container">
-      <button mat-mini-fab color="primary" class="btn btn-arrow_left" (click)="prev()" [disabled]="+page === 1 || page === undefined">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_left</mat-icon>
-      </button>
-      <div class="number-page">{{ page }}</div>
-      <button mat-mini-fab color="primary" class="btn btn-arrow_right" (click)="next()" [disabled]="page >= allPages">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_right</mat-icon>
-      </button>
+  <ng-container *ngIf="allPages; else paginarorRef">
+    <div class="paginator" *ngIf="allPages > 1">
+      <div class="btn-container">
+        <button mat-mini-fab color="primary" class="btn btn-arrow_left" (click)="prev()" [disabled]="+page === 1 || page === undefined">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_left</mat-icon>
+        </button>
+        <div class="number-page">{{ page }} of {{ allPages }}</div>
+        <button mat-mini-fab color="primary" class="btn btn-arrow_right" (click)="next()" [disabled]="page >= allPages">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #paginarorRef>
+    <p class="not-articles">This Publisher Do Not Have Any Articles</p>
+  </ng-template>
 </div>

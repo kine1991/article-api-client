@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'site-header',
@@ -7,17 +7,25 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public user;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-
+    this.authService.user$.subscribe(auth => {
+      this.user = auth;
+      console.log('Header ngOnInit', auth);
+      if(auth) {
+        console.log('user');
+      }
+    });
   }
 
   logout() {
     this.authService.logout().subscribe(auth => {
+      this.authService.user$.next(auth.data.user);
       console.log('Header logout - ', auth);
     });
   }
