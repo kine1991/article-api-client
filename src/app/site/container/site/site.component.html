@@ -1,5 +1,7 @@
-<site-header></site-header>
-<div class="container" [ngClass]="{'c1': selectedColor === 'white', 'c2': selectedColor === 'silver', 'c3': selectedColor === 'hazelnut', 'c4': selectedColor === 'dark'}">
+<site-header>
+  <router-outlet></router-outlet>
+</site-header>
+<!-- <div class="container" [ngClass]="{'c1': selectedColor === 'white', 'c2': selectedColor === 'silver', 'c3': selectedColor === 'hazelnut', 'c4': selectedColor === 'dark'}">
   <router-outlet></router-outlet>
 
   <div class="fixed-btn">
@@ -16,4 +18,4 @@
     <div class="palette__item c3" (click)="selectedColor = 'hazelnut'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'hazelnut'}">c3</div>
     <div class="palette__item c4" (click)="selectedColor = 'dark'; showPalette = false" [ngClass]="{'selected-color': selectedColor === 'dark'}">c4</div>
   </div>
-</div>
+</div> -->

@@ -15,6 +15,20 @@
   justify-content: center;
   align-items: center;
 
+  &__left-side-menu-icon {
+    display: none;
+    margin-left: 1rem;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+  &__left-side {
+    display: block;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
   &__right-side {
     // align-self: center;
     align-items: center;
@@ -111,7 +125,7 @@
   &__name {
     display: inline-block;
     font-weight: 300;
-    margin-right: 10px;
+    margin-right: 20px;
     // height: 40px;
     // width: 40px;
   }
@@ -130,3 +144,25 @@
 
 
 }
+
+.sidebar-container {
+  // height: 100vh;
+  // position: fixed;
+}
+
+mat-drawer-content {
+  // background: gray;
+}
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {  }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {  }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {  }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {  }
+

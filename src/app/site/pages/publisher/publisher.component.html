@@ -9,11 +9,11 @@
       <img [src]="publisher.photo" [alt]="publisher.name" class="publisher-image">
     </div>
   </div>
-  <mat-divider></mat-divider>
 </div>
 
 <div class="articles" *ngIf="articles">
   <ng-container *ngFor="let article of articles">
+    <mat-divider></mat-divider>
     <site-card [article]="article"></site-card>
   </ng-container>
   <ng-container *ngIf="allPages; else paginarorRef">

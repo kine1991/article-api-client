@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public user;
+  public isOpenSideBar;
 
   constructor(
     private authService: AuthService
