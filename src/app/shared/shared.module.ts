@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AngularMaterialModule } from './modules/angular-material.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
+import { AngularResizedEventModule } from 'angular-resize-event';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    AngularResizedEventModule
   ],
   exports: [
     HttpClientModule,
@@ -26,6 +27,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AngularMaterialModule,
     SpinnerComponent,
     PageNotFoundComponent,
+    AngularResizedEventModule
   ]
 })
 export class SharedModule { }

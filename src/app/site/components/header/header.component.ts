@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public user;
-  public isOpenSideBar;
+  public isOpenSideBar = false;
 
   constructor(
     private authService: AuthService
@@ -17,10 +17,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.authService.user$.subscribe(auth => {
       this.user = auth;
-      console.log('Header ngOnInit', auth);
-      if(auth) {
-        console.log('user');
-      }
     });
   }
 
