@@ -1,0 +1,31 @@
+<h1 class="dialog-title" mat-dialog-title>Filter <mat-icon>filter_alt</mat-icon></h1>
+<div mat-dialog-content class="content" *ngIf="!isLoading">
+  <div class="content__authors">
+    <h3 class="title">Author</h3>
+    <p [ngClass]="{'selected': selectedAuthor === undefined}" (click)="selectedAuthor = undefined">No</p>
+    <ng-container *ngFor="let author of authors">
+      <p [ngClass]="{'selected': selectedAuthor === author}" (click)="selectedAuthor = author">{{ author }}</p>
+    </ng-container>
+  </div>
+  <div class="content__categories">
+    <h3 class="title">Category</h3>
+    <p [ngClass]="{'selected': selectedCategory === undefined}" (click)="selectedCategory = undefined">No</p>
+    <ng-container *ngFor="let category of categories">
+      <p [ngClass]="{'selected': selectedCategory === category}" (click)="selectedCategory = category">{{ category }}</p>
+    </ng-container>
+  </div>
+  <div class="content__priorities">
+    <h3 class="title">Priority</h3>
+    <p [ngClass]="{'selected': selectedPriority === undefined}" (click)="selectedPriority = undefined">No</p>
+    <ng-container *ngFor="let priority of priorities">
+      <p [ngClass]="{'selected': selectedPriority == priority}" (click)="selectedPriority = priority">{{ priority }}</p>
+    </ng-container>
+  </div>
+</div>
+<div class="loading-container" *ngIf="isLoading">
+  <shared-spinner></shared-spinner>
+</div>
+<div mat-dialog-actions>
+  <button color="primary" mat-button [mat-dialog-close]="{ author: selectedAuthor, category: selectedCategory, priority: selectedPriority }" cdkFocusInitial>Apply</button>
+  <button color="warn" mat-button (click)="onNoClick()">Cancel</button>
+</div>

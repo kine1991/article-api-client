@@ -1,0 +1,52 @@
+.dialog-title {
+  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  line-height: 1.6;
+  // margin: 15px 0;
+  padding: 10px 15px;
+  opacity: .8;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  &__authors {
+    flex: 1;
+  }
+  &__categories {
+    flex: 1;
+  }
+  &__priorities {
+    flex: 1;
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.selected {
+  color: orange;
+  text-decoration: underline;
+}
+
+p {
+  cursor: pointer;
+}
+
+.loading-container {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

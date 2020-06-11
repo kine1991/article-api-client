@@ -14,26 +14,54 @@ table {
 }
 
 .author {
-  padding: 0 1rem;
+  
 
 }
 .autor-header {
-  padding: 0 1rem;
+  padding-left: 24px;
 }
 .category {
-  padding: 0 1rem;
+  // padding: 0 1rem;
 
 }
 .category-header {
-  padding: 0 1rem;
+  // padding: 0 1rem;
 }
 .title {
-  padding: 0 1rem;
+  // padding: 0 1rem;
   min-width: 150px;
 
 }
 .title-header {
-  padding: 0 1rem;
+  // padding: 0 1rem;
+}
+
+.edit {
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.remove-header {
+  text-align: center;
+}
+
+.remove {
+  text-align: center;
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.edit-icon {
+  // transition: all, 0.3s;
+  // &:hover {
+  //   color: orange;
+  // }
 }
 
 .loading-container {
@@ -53,4 +81,8 @@ table {
   justify-content: flex-end;
   align-items: center;
   padding: 1rem;
+}
+
+.filter-btn {
+  margin-right: 2rem;
 }

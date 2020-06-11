@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SiteComponent } from './container/site/site.component';
 import { CardComponent } from './components/card/card.component';
 import { SharedModule } from '../shared/shared.module';
+import { CreateArticleDialogComponent } from './components/create-article-dialog/create-article-dialog.component';
+import { ArticlesFilterDialogComponent } from './components/articles-filter-dialog/articles-filter-dialog.component';
 
 
 @NgModule({
@@ -16,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     ArticlesComponent, 
     HeaderComponent, 
     SiteComponent, 
-    CardComponent
+    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent
   ],
   imports: [
     CommonModule,

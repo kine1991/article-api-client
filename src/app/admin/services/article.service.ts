@@ -80,4 +80,8 @@ export class ArticleService {
   getArticles(params?) {
     return this.http.get<GetArticlesResponse>(`${environment.url}/articles`, { params })
   }
+
+  getFilter() {
+    return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`)
+  }
 }

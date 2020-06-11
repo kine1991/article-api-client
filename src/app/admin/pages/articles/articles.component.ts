@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../services/article.service';
 import { NavigationExtras, Router, ActivatedRoute, Params } from '@angular/router';
 import { switchMap, delay } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateArticleDialogComponent } from '../../components/create-article-dialog/create-article-dialog.component';
+import { ArticlesFilterDialogComponent } from '../../components/articles-filter-dialog/articles-filter-dialog.component';
 
 @Component({
   selector: 'app-articles',
@@ -17,13 +20,14 @@ export class ArticlesComponent implements OnInit {
   public isLoading = true;
   public isLoaded;
 
-  displayedColumns: string[] = ['imageUrl', 'author', 'category', 'title', 'createdAt'];
+  displayedColumns: string[] = ['imageUrl', 'author', 'category', 'title', 'createdAt', 'edit', 'remove'];
 
   // https://vk.com/images/camera_400.png?ava=1
   constructor(
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -57,6 +61,42 @@ export class ArticlesComponent implements OnInit {
     };
 
     this.router.navigate(['/admin/articles'], navigationExtras);
+  }
+
+  create() {
+    const dialogRef = this.dialog.open(CreateArticleDialogComponent, {
+      width: '750px',
+      data: {name: 'name1'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog CREATE was closed', result);
+    });
+  }
+
+  edit(id) {
+    console.log('edit id: ', id)
+  }
+
+  remove(id) {
+    console.log('remove id: ', id)
+  }
+
+  filter() {
+    const dialogRef = this.dialog.open(ArticlesFilterDialogComponent, {
+      width: '750px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog Filter was closed', result);
+
+      const navigationExtras: NavigationExtras = {
+        queryParamsHandling: 'merge',
+        queryParams: result,
+      };
+  
+      this.router.navigate(['/admin/articles'], navigationExtras);
+    });
   }
 
 }
