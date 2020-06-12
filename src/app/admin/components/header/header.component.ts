@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ResizedEvent } from 'angular-resize-event';
-import { Subject } from 'rxjs';
+import { ResponsiveService } from '../../services/responsive.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'admin-header',
@@ -9,14 +10,17 @@ import { Subject } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private widthSubscription: Subscription;
+  private widthWithoutSidebarSubscription: Subscription;
   public user;
   public isOpenSideBar = true;
-  public currentWidth$ = new Subject();
+  
   public currentWidth;
 
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private responsiveService: ResponsiveService,
   ) {
   }
 
@@ -25,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.user = auth;
     });
 
-    this.currentWidth$.subscribe(currentWidth => {
+    this.widthSubscription = this.responsiveService.currentWidth$.subscribe(currentWidth => {
       this.currentWidth = currentWidth;
     });
 
@@ -40,11 +44,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onResized(event: ResizedEvent) {
-    this.currentWidth$.next(event.newWidth);  
+    this.responsiveService.currentWidth$.next(event.newWidth);  
   }
 
-  ngOnDestroy(): void {
-    this.currentWidth$.unsubscribe();
+  onResizedWithoutSidebar(event: ResizedEvent) {
+    this.responsiveService.currentWidthWithoutSidebar$.next(event.newWidth);  
+  }
+
+  ngOnDestroy() {
+    this.responsiveService.currentWidth$.unsubscribe();
+    this.responsiveService.currentWidthWithoutSidebar$.unsubscribe();
   }
 
 }

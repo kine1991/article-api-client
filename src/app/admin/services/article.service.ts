@@ -18,6 +18,13 @@ export interface GetArticleResponse {
   },
 }
 
+export interface CreateArticleResponse {
+  status: string,
+  data: {
+    article: Article
+  },
+}
+
 export interface GetFilterResponse {
   status: string,
   data: {
@@ -78,10 +85,16 @@ export class ArticleService {
   ) { }
 
   getArticles(params?) {
-    return this.http.get<GetArticlesResponse>(`${environment.url}/articles`, { params })
+    return this.http.get<GetArticlesResponse>(`${environment.url}/articles`, { params });
+  }
+
+  createArticle(data) {
+    return this.http.post<CreateArticleResponse>(`${environment.url}/articles`, data, {
+      withCredentials: true
+    });
   }
 
   getFilter() {
-    return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`)
+    return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
   }
 }

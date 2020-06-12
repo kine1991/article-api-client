@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SiteComponent } from './container/site/site.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
-import { ArticleComponent } from './pages/article/article.component';
+import { ArticlePreviewComponent } from './pages/article-preview/article-preview.component';
 
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'articles/:id',
-        component: ArticleComponent
+        component: ArticlePreviewComponent
       },
     ]
   },

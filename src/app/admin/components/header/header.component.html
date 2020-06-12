@@ -7,16 +7,17 @@
   </mat-drawer>
   <mat-drawer-content>
     <!-- Header -->
-    <div class="navbar">
+    <div class="navbar" (resized)="onResizedWithoutSidebar($event)">
       <div class="container">
         <div class="container__left-side-menu-icon">
           <button mat-icon-button  (click)="isOpenSideBar = !isOpenSideBar"><mat-icon>menu</mat-icon></button>
         </div>
-        <div class="container__left-side">
+        <!-- <div class="container__left-side">
           <span class="logo" [routerLink]="['/admin']">Admin Panel</span>
-        </div>
+        </div> -->
         <div class="space"></div>
         <div class="container__right-side">
+          <span class="nav-link">{{currentWidth}}</span>
           <span class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Site Page</span>
           <div class="profile-container" [matMenuTriggerFor]="menu">
             <span *ngIf="user" class="profile-container__name">{{ user.name.split(' ')[0] }}</span>
