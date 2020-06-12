@@ -7,6 +7,7 @@ import { CreateArticleDialogComponent } from '../../components/create-article-di
 import { ArticlesFilterDialogComponent } from '../../components/articles-filter-dialog/articles-filter-dialog.component';
 import { ResponsiveService } from '../../services/responsive.service';
 import { Subscription } from 'rxjs';
+import { DeleteArticleDialogComponent } from '../../components/delete-article-dialog/delete-article-dialog.component';
 
 @Component({
   selector: 'app-articles',
@@ -35,24 +36,26 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     public dialog: MatDialog
   ) { }
 
+  fetchData() {
+    this.route.queryParams.pipe(
+      switchMap((params: Params) => {
+        this.isLoaded = false;
+        this.isLoading = true;
+        // const { page, limit } = params;
+        return this.articleService.getArticles({ ...params, fields: '-content -__v' });
+      }),
+      delay(300),
+    ).subscribe(article => {
+      this.articles = article.data.articles;
+      this.limit = article.allResults;
+      this.pageSize = article.results;
+      this.isLoaded = true;
+      this.isLoading = false;
+    });
+  }
+
   ngOnInit() {
     this.fetchData();
-    // this.route.queryParams.pipe(
-    //   switchMap((params: Params) => {
-    //     this.isLoaded = false;
-    //     this.isLoading = true;
-    //     // const { page, limit } = params;
-    //     return this.articleService.getArticles({ ...params, fields: '-content -__v' });
-    //   }),
-    //   delay(300),
-    // ).subscribe(article => {
-    //   this.articles = article.data.articles;
-    //   this.limit = article.allResults;
-    //   this.pageSize = article.results;
-
-    //   this.isLoaded = true;
-    //   this.isLoading = false;
-    // });
 
     this.widthWithoutSidebarSubscription = this.responsiveService.currentWidthWithoutSidebar$.subscribe(currentWidthWithoutSidebar => {
       this.currentWidthWithoutSidebar = currentWidthWithoutSidebar;
@@ -79,33 +82,14 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
   create() {
     const dialogRef = this.dialog.open(CreateArticleDialogComponent, {
-      width: '750px',
+      width: '950px',
       data: {name: 'name1'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result', result)
       if(result === 'reload') {
         this.fetchData();
       }
-    });
-  }
-
-  fetchData() {
-    this.route.queryParams.pipe(
-      switchMap((params: Params) => {
-        this.isLoaded = false;
-        this.isLoading = true;
-        // const { page, limit } = params;
-        return this.articleService.getArticles({ ...params, fields: '-content -__v' });
-      }),
-      delay(300),
-    ).subscribe(article => {
-      this.articles = article.data.articles;
-      this.limit = article.allResults;
-      this.pageSize = article.results;
-      this.isLoaded = true;
-      this.isLoading = false;
     });
   }
 
@@ -114,7 +98,17 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   remove(id) {
-    console.log('remove id: ', id)
+    const dialogRef = this.dialog.open(DeleteArticleDialogComponent, {
+      width: '300px',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === 'reload') {
+        this.fetchData();
+      }
+    });
+    // console.log('remove id: ', id)
   }
 
   filter() {

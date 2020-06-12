@@ -28,11 +28,9 @@ export class ArticlesFilterDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.isLoading = true;
     this.route.queryParams.pipe(
       switchMap((params: Params) => {
         const { author, category, priority } = params;
-        console.log('params', author, category, priority);
         this.selectedAuthor = author;
         this.selectedCategory = category;
         this.selectedPriority = priority;
@@ -48,7 +46,6 @@ export class ArticlesFilterDialogComponent implements OnInit {
       this.authors = filter.data.authors;
       this.categories = filter.data.categories;
       this.priorities = filter.data.priorities;
-      console.log('filter', filter.data);
     })
   }
 

@@ -97,4 +97,10 @@ export class ArticleService {
   getFilter() {
     return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
   }
+
+  deleteArticle(id) {
+    return this.http.delete(`${environment.url}/articles/${id}`, {
+      withCredentials: true
+    });
+  }
 }
