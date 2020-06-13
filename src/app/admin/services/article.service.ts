@@ -66,6 +66,7 @@ export interface Article {
   publisher: string,
   title: string,
   description: string,
+  content: string,
   priority: number,
   imageUrl?: string,
   imagesUrl?: string[] | [],
@@ -88,6 +89,10 @@ export class ArticleService {
     return this.http.get<GetArticlesResponse>(`${environment.url}/articles`, { params });
   }
 
+  getArticle(id) {
+    return this.http.get<GetArticleResponse>(`${environment.url}/articles/${id}`);
+  }
+
   createArticle(data) {
     return this.http.post<CreateArticleResponse>(`${environment.url}/articles`, data, {
       withCredentials: true
@@ -96,6 +101,12 @@ export class ArticleService {
 
   getFilter() {
     return this.http.get<GetFilterResponse>(`${environment.url}/articles/filter`);
+  }
+
+  updateArticle({ id, ...data }) {
+    return this.http.patch(`${environment.url}/articles/${id}`, data, {
+      withCredentials: true
+    });
   }
 
   deleteArticle(id) {

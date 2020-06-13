@@ -8,6 +8,7 @@ import { ArticlesFilterDialogComponent } from '../../components/articles-filter-
 import { ResponsiveService } from '../../services/responsive.service';
 import { Subscription } from 'rxjs';
 import { DeleteArticleDialogComponent } from '../../components/delete-article-dialog/delete-article-dialog.component';
+import { EditArticleDialogComponent } from '../../components/edit-article-dialog/edit-article-dialog.component';
 
 @Component({
   selector: 'app-articles',
@@ -64,7 +65,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
       } else {
         this.displayedColumns = ['imageUrl', 'author', 'category', 'title', 'priority', 'createdAt', 'edit', 'remove', 'view'];
       }
-    })
+    });
   }
 
   pageChange(event) {
@@ -94,7 +95,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   edit(id) {
-    console.log('edit id: ', id)
+    const dialogRef = this.dialog.open(EditArticleDialogComponent, {
+      width: '950px',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === 'reload') {
+        this.fetchData();
+      }
+    });
   }
 
   remove(id) {
@@ -108,7 +118,6 @@ export class ArticlesComponent implements OnInit, OnDestroy {
         this.fetchData();
       }
     });
-    // console.log('remove id: ', id)
   }
 
   filter() {

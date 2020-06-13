@@ -46,6 +46,7 @@ export class CreateArticleDialogComponent implements OnInit {
 
   submit() {
     this.articleService.createArticle(this.createArticleForm.value).subscribe(data => {
+        console.log('data', data);
         this.dialogRef.close('reload');
         this._snackBar.open('article was created', 'close', { duration: 4000 });
     });

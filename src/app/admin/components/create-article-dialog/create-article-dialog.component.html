@@ -27,10 +27,6 @@
             <span *ngIf="createArticleForm.get('author').errors.required">author is required</span>
           </mat-error>
         </mat-form-field>
-        <!-- <mat-button-toggle-group class="author-container__btn" name="fontStyle1" #group="pp" value="'new'" (change)="onValChange(group.value)">
-          <mat-button-toggle (click)="changeIsSelectAuthor()" [value]="'new'">New Author</mat-button-toggle>
-          <mat-button-toggle (click)="changeIsSelectAuthor()" [value]="'existing'">Existing Author</mat-button-toggle>
-        </mat-button-toggle-group> -->
 
         <mat-button-toggle-group class="author-container__btn" #group="matButtonToggleGroup" [value]="isSelectAuthor" (change)="isSelectAuthorChange(group.value)">
           <mat-button-toggle [value]="true">

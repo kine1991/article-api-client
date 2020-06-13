@@ -12,6 +12,7 @@ import { CreateArticleDialogComponent } from './components/create-article-dialog
 import { ArticlesFilterDialogComponent } from './components/articles-filter-dialog/articles-filter-dialog.component';
 import { ArticlePreviewComponent } from './pages/article-preview/article-preview.component';
 import { DeleteArticleDialogComponent } from './components/delete-article-dialog/delete-article-dialog.component';
+import { EditArticleDialogComponent } from './components/edit-article-dialog/edit-article-dialog.component';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { DeleteArticleDialogComponent } from './components/delete-article-dialog
     ArticlesComponent, 
     HeaderComponent, 
     SiteComponent, 
-    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent
+    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,107 @@
+<ng-container *ngIf="filterData && editArticleForm">
+  <h1 mat-dialog-title>Edit Article</h1>
+  <form class="form" [formGroup]="editArticleForm" (ngSubmit)="submit()">
+    <div mat-dialog-content>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Enter your title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="editArticleForm.get('title').invalid && editArticleForm.get('title').touched">
+          <span *ngIf="editArticleForm.get('title').errors.maxlength">title should be less than {{editArticleForm.get('title').errors.maxlength.requiredLength}} characters, you enter {{editArticleForm.get('title').errors.maxlength.actualLength}}</span>
+          <span *ngIf="editArticleForm.get('title').errors.minlength">title should be greather than {{editArticleForm.get('title').errors.minlength.requiredLength}} characters, you enter {{editArticleForm.get('title').errors.minlength.actualLength}}</span>
+          <span *ngIf="editArticleForm.get('title').errors.required">title is required</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="author-container">
+        <mat-form-field class="full-width" class="author-container__field" appearance="outline" *ngIf="isSelectAuthor">
+          <mat-label>Select Author</mat-label>
+          <mat-select formControlName="author">
+            <mat-option *ngFor="let author of filterData.authors" [value]="author">{{ author }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="author-container__field" appearance="outline" *ngIf="!isSelectAuthor">
+          <mat-label>Enter New Author</mat-label>
+          <input formControlName="author" matInput>
+          <mat-error *ngIf="editArticleForm.get('author').invalid && editArticleForm.get('author').touched">
+            <span *ngIf="editArticleForm.get('author').errors.maxlength">author should be less than {{editArticleForm.get('author').errors.maxlength.requiredLength}} characters, you enter {{editArticleForm.get('author').errors.maxlength.actualLength}}</span>
+            <span *ngIf="editArticleForm.get('author').errors.minlength">author should be greather than {{editArticleForm.get('author').errors.minlength.requiredLength}} characters, you enter {{editArticleForm.get('author').errors.minlength.actualLength}}</span>
+            <span *ngIf="editArticleForm.get('author').errors.required">author is required</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-button-toggle-group class="author-container__btn" #group="matButtonToggleGroup" [value]="isSelectAuthor" (change)="isSelectAuthorChange(group.value)">
+          <mat-button-toggle [value]="true">
+              <span>Existing Author</span>
+          </mat-button-toggle>
+          <mat-button-toggle [value]="false">
+              <span>New Author</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="category-container">
+        <mat-form-field class="full-width" class="category-container__field" appearance="outline" *ngIf="isSelectCategory">
+          <mat-label>Select Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of filterData.categories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="category-container__field" appearance="outline" *ngIf="!isSelectCategory">
+          <mat-label>Enter New Category</mat-label>
+          <input formControlName="category" matInput>
+          <mat-error *ngIf="editArticleForm.get('category').invalid && editArticleForm.get('category').touched">
+            <span *ngIf="editArticleForm.get('category').errors.maxlength">category should be less than {{editArticleForm.get('category').errors.maxlength.requiredLength}} characters, you enter {{editArticleForm.get('category').errors.maxlength.actualLength}}</span>
+            <span *ngIf="editArticleForm.get('category').errors.minlength">category should be greather than {{editArticleForm.get('category').errors.minlength.requiredLength}} characters, you enter {{editArticleForm.get('category').errors.minlength.actualLength}}</span>
+            <span *ngIf="editArticleForm.get('category').errors.required">category is required</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-button-toggle-group class="category-container__btn" #group2="matButtonToggleGroup" [value]="isSelectCategory" (change)="isSelectCategoryChange(group2.value)">
+          <mat-button-toggle [value]="true">Existing Category</mat-button-toggle>
+          <mat-button-toggle [value]="false">New Category</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Enter your description</mat-label>
+        <input matInput formControlName="description">
+        <mat-error *ngIf="editArticleForm.get('description').invalid && editArticleForm.get('description').touched">
+          <span *ngIf="editArticleForm.get('description').errors.maxlength">description should be less than {{editArticleForm.get('description').errors.maxlength.requiredLength}} characters, you enter {{editArticleForm.get('description').errors.maxlength.actualLength}}</span>
+          <span *ngIf="editArticleForm.get('description').errors.minlength">description should be greather than {{editArticleForm.get('description').errors.minlength.requiredLength}} characters, you enter {{editArticleForm.get('description').errors.minlength.actualLength}}</span>
+          <span *ngIf="editArticleForm.get('description').errors.required">description is required</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Enter your content</mat-label>
+        <textarea matInput  
+          cdkTextareaAutosize
+          cdkAutosizeMinRows=5
+          cdkAutosizeMaxRows=15
+          formControlName="content">
+        </textarea>
+        <mat-error *ngIf="editArticleForm.get('content').invalid && editArticleForm.get('content').touched">
+          <span *ngIf="editArticleForm.get('content').errors.minlength">content should be greather than {{editArticleForm.get('content').errors.minlength.requiredLength}} characters, you enter {{editArticleForm.get('content').errors.minlength.actualLength}}</span>
+          <span *ngIf="editArticleForm.get('content').errors.required">content is required</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Select Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option *ngFor="let priority of filterData.priorities" [value]="priority">{{ priority }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Enter your imageUrl</mat-label>
+        <input matInput formControlName="imageUrl">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-stroked-button color="primary" type="submit">Edit</button>
+      <button mat-stroked-button color="warn" (click)="onNoClick()" type="button">Cancel</button>
+    </div>
+  
+  </form>
+</ng-container>
+
+<div class="loading-container" *ngIf="!filterData">
+  <shared-spinner></shared-spinner>
+</div>

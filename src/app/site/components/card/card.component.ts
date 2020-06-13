@@ -9,7 +9,6 @@ export class CardComponent implements OnInit {
   @Input() article
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {}
 
 }
