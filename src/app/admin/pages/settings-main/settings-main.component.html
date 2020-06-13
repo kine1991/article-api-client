@@ -1,0 +1,15 @@
+<div class="settings-main-container">
+  <h1 class="title">Main</h1>
+  <div class="user">
+    <div class="user__left">
+      <span class="name">{{ user.name }}</span>
+      <span class="email">{{ user.email }}</span>
+      <span class="role">{{ user.role }}</span>
+    </div>
+    <div class="user__right">
+      <img [src]="user.photo" [alt]="user.name" class="photo">
+    </div>
+  </div>
+</div>
+
+<!-- <pre>{{user |json}}</pre> -->

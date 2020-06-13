@@ -13,6 +13,10 @@ import { ArticlesFilterDialogComponent } from './components/articles-filter-dial
 import { ArticlePreviewComponent } from './pages/article-preview/article-preview.component';
 import { DeleteArticleDialogComponent } from './components/delete-article-dialog/delete-article-dialog.component';
 import { EditArticleDialogComponent } from './components/edit-article-dialog/edit-article-dialog.component';
+import { SettingsLayoutWithNavbarComponent } from './container/settings-layout-with-navbar/settings-layout-with-navbar.component';
+import { AdminComponent } from './container/admin/admin.component';
+import { SettingsMainComponent } from './pages/settings-main/settings-main.component';
+import { SettingsEditComponent } from './pages/settings-edit/settings-edit.component';
 
 
 @NgModule({
@@ -21,7 +25,7 @@ import { EditArticleDialogComponent } from './components/edit-article-dialog/edi
     ArticlesComponent, 
     HeaderComponent, 
     SiteComponent, 
-    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent
+    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent, SettingsLayoutWithNavbarComponent, AdminComponent, SettingsMainComponent, SettingsEditComponent
   ],
   imports: [
     CommonModule,

@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { SiteComponent } from './container/site/site.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { ArticlePreviewComponent } from './pages/article-preview/article-preview.component';
+import { AdminComponent } from './container/admin/admin.component';
+import { SettingsLayoutWithNavbarComponent } from './container/settings-layout-with-navbar/settings-layout-with-navbar.component';
+import { SettingsMainComponent } from './pages/settings-main/settings-main.component';
+import { SettingsEditComponent } from './pages/settings-edit/settings-edit.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: SiteComponent,
+    component: AdminComponent,
     children: [
       {
         path: 'articles',
@@ -18,6 +22,20 @@ const routes: Routes = [
         path: 'articles/:id',
         component: ArticlePreviewComponent
       },
+      {
+        path: 'settings',
+        component: SettingsLayoutWithNavbarComponent,
+        children: [
+          {
+            path: '',
+            component: SettingsMainComponent
+          },
+          {
+            path: 'edit',
+            component: SettingsEditComponent
+          },
+        ]
+      }
     ]
   },
 ];
