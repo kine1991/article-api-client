@@ -1,0 +1,23 @@
+.full-width {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}

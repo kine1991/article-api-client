@@ -10,31 +10,21 @@ import { ResponsiveService } from '../../services/responsive.service';
   styleUrls: ['./settings-layout-with-navbar.component.scss']
 })
 export class SettingsLayoutWithNavbarComponent implements OnInit, OnDestroy {
-  public userSubscription: Subscription;
   public responsiveSubscription: Subscription;
 
-  public user;
   public widthWithoutSidebar;
 
   constructor(
-    private authService: AuthService,
     private responsiveService: ResponsiveService,
-    private router: Router
   ) { }
 
   ngOnInit() {
-    this.userSubscription = this.authService.user$.subscribe(auth => {
-      this.user = auth;
-    });
-
     this.responsiveService.currentWidthWithoutSidebar$.subscribe(widthWithoutSidebar => {
       this.widthWithoutSidebar = widthWithoutSidebar;
     });
   }
 
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
-    this.responsiveSubscription.unsubscribe();
   }
 
 
