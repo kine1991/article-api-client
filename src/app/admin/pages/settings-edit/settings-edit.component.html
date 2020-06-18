@@ -19,26 +19,39 @@
         <span *ngIf="userForm.get('email').errors.required">email is required</span>
       </mat-error>
     </mat-form-field>
-    <!-- <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Enter your photo</mat-label>
-      <input matInput formControlName="photo">
-      <mat-error *ngIf="userForm.get('photo').invalid && userForm.get('photo').touched">
-        <span *ngIf="userForm.get('photo').errors.maxlength">photo should be less than {{userForm.get('photo').errors.maxlength.requiredLength}} characters, you enter {{userForm.get('photo').errors.maxlength.actualLength}}</span>
-        <span *ngIf="userForm.get('photo').errors.minlength">photo should be greather than {{userForm.get('photo').errors.minlength.requiredLength}} characters, you enter {{userForm.get('photo').errors.minlength.actualLength}}</span>
-        <span *ngIf="userForm.get('photo').errors.required">photo is required</span>
-      </mat-error>
-    </mat-form-field> -->
-    <div>
-      <button mat-stroked-button (click)="filePicker.click()" type="button">Pick Image</button>
-      <input type="file" #filePicker (change)="onImagePicked($event)">
-    </div>
-    <div class="image-preview" *ngIf="imagePreview || userForm.get('photo').valid">
-    <!-- <div class="image-preview" *ngIf="imagePreview !== '' || imagePreview || userForm.get('photo').valid"> -->
-      <!-- <p *ngIf="imagePreview">{{imagePreview}}</p> -->
-      <img [src]="imagePreview" [alt]="userForm.get('title')">
+
+    <div class="photo-container">
+      <mat-slide-toggle (change)="changeUploadPhoto($event)">Reference Photo</mat-slide-toggle>
+      <ng-container *ngIf="refPhoto">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Enter your photo</mat-label>
+          <input matInput formControlName="photo">
+          <mat-error *ngIf="userForm.get('photo').invalid && userForm.get('photo').touched">
+            <span *ngIf="userForm.get('photo').errors.maxlength">photo should be less than {{userForm.get('photo').errors.maxlength.requiredLength}} characters, you enter {{userForm.get('photo').errors.maxlength.actualLength}}</span>
+            <span *ngIf="userForm.get('photo').errors.minlength">photo should be greather than {{userForm.get('photo').errors.minlength.requiredLength}} characters, you enter {{userForm.get('photo').errors.minlength.actualLength}}</span>
+            <span *ngIf="userForm.get('photo').errors.required">photo is required</span>
+          </mat-error>
+        </mat-form-field>
+        <!-- <div class="image-preview" *ngIf="imagePreview || userForm.get('photo').valid"> -->
+          <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview !== null && userForm.get('photo').valid">
+            <img [src]="imagePreview" [alt]="userForm.get('title')">
+        </div>
+      </ng-container>
+      <div *ngIf="!refPhoto">
+        <div>
+          <button mat-stroked-button (click)="filePicker.click()" type="button">Pick Image <mat-icon>cloud_upload</mat-icon></button>
+          <input type="file" #filePicker (change)="onImagePicked($event)">
+        </div>
+        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview !== null && userForm.get('photo').valid">
+        <!-- <div class="image-preview" *ngIf="imagePreview !== '' || imagePreview || userForm.get('photo').valid"> -->
+          <!-- <p *ngIf="imagePreview">{{imagePreview}}</p> -->
+          <img [src]="imagePreview" [alt]="userForm.get('title')">
+        </div>
+      </div>
     </div>
     <button mat-stroked-button color="primary" type="submit">Edit</button>
   </form>
 </div>
 
 <pre *ngIf="userForm">{{userForm.value | json}}</pre>
+

@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { mimeType } from './mime-type.validator';
 import { UserService } from '../../services/user.service';
+import { delay, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settings-edit',
@@ -16,6 +17,7 @@ export class SettingsEditComponent implements OnInit, OnDestroy {
   public userForm;
   public user;
   
+  public refPhoto;
   public imagePreview;
 
   constructor(
@@ -37,16 +39,28 @@ export class SettingsEditComponent implements OnInit, OnDestroy {
         }),
       })
     });
+
+    this.userForm.get('photo').valueChanges.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+    ).subscribe(data => {
+      if(this.refPhoto) {
+        this.imagePreview = data;
+      }
+      console.log('data', data);
+    })
   }
+
 
   submit() {
     // console.log('111', this.userForm.value);
     if(this.userForm.valid) {
       console.log(this.userForm.value);
       const { name, email, photo } = this.userForm.value;
+      // console.log({ name, email, photo });
       this.userService.updateMe({ name, email, photo })
       .subscribe(data => {
-        console.log('data', data);
+        this.authService.user$.next(data.data.user);
       });
     } else {
       console.log('invalid');
@@ -63,10 +77,13 @@ export class SettingsEditComponent implements OnInit, OnDestroy {
       this.imagePreview = reader.result;
     };
     reader.readAsDataURL(file);
+  }
 
-    // console.log(this.userForm.get('photo'));
-    // console.log('event', event.target);
-    // console.log('file', file);
+  changeUploadPhoto(event) {
+    this.refPhoto = event.checked;
+    // if(event.checked) {
+    //   this.userForm.get('photo').setValue(null);
+    // }
   }
 
   ngOnDestroy() {
