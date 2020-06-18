@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout().subscribe(auth => {
       this.authService.user$.next(auth.data.user);
-      console.log('AdminHeader logout - ', auth);
+      // this.authService.isAuthenticated$.next(false);
     });
 
   }
@@ -52,8 +52,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.responsiveService.currentWidth$.unsubscribe();
-    this.responsiveService.currentWidthWithoutSidebar$.unsubscribe();
+    // if(this.responsiveService.currentWidth$) this.responsiveService.currentWidth$.unsubscribe();
+    // if(this.responsiveService.currentWidthWithoutSidebar$) this.responsiveService.currentWidthWithoutSidebar$.unsubscribe();
   }
 
 }

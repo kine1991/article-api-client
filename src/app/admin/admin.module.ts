@@ -17,7 +17,8 @@ import { SettingsLayoutWithNavbarComponent } from './container/settings-layout-w
 import { AdminComponent } from './container/admin/admin.component';
 import { SettingsMainComponent } from './pages/settings-main/settings-main.component';
 import { SettingsEditComponent } from './pages/settings-edit/settings-edit.component';
-
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,9 @@ import { SettingsEditComponent } from './pages/settings-edit/settings-edit.compo
     HeaderComponent, 
     SiteComponent, 
     CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent, SettingsLayoutWithNavbarComponent, AdminComponent, SettingsMainComponent, SettingsEditComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   imports: [
     CommonModule,

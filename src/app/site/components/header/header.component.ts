@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe(auth => {
       this.authService.user$.next(auth.data.user);
-      console.log('Header logout - ', auth);
+      this.authService.isAuthenticated$.next(false);
     });
   }
 

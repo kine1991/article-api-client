@@ -9,6 +9,7 @@ import { PublishersComponent } from './pages/publishers/publishers.component';
 import { PublisherComponent } from './pages/publisher/publisher.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { NotAuthGuard } from '../guards/not-auth.guard';
 
 
 const routes: Routes = [
@@ -18,10 +19,12 @@ const routes: Routes = [
     children: [
       {
         path: 'sign-in',
+        canActivate: [NotAuthGuard],
         component: SignInComponent
       },
       {
         path: 'sign-up',
+        canActivate: [NotAuthGuard],
         component: SignUpComponent
       },
       {

@@ -72,8 +72,8 @@ export class EditArticleDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.articleSubscription.unsubscribe();
-    this.filterSubscription.unsubscribe();
+    if(this.articleSubscription) this.articleSubscription.unsubscribe();
+    if(this.filterSubscription) this.filterSubscription.unsubscribe();
   }
 
 }

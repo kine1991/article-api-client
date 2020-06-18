@@ -140,7 +140,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.widthWithoutSidebarSubscription.unsubscribe();
+    if(this.widthWithoutSidebarSubscription) this.widthWithoutSidebarSubscription.unsubscribe();
   }
 
 }

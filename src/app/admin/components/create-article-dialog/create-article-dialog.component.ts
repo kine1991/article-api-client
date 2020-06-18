@@ -67,6 +67,6 @@ export class CreateArticleDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.filterSubscription.unsubscribe();
+    if (this.filterSubscription) this.filterSubscription.unsubscribe();
   }
 }

@@ -17,8 +17,14 @@ export class AppComponent implements OnInit {
 
   checkAuth() {
     this.authService.checkAuth().subscribe(auth => {
-      console.log('app - checkAuth', auth);
+      console.log('app - checkAuth', auth.data.user);
       this.authService.user$.next(auth.data.user);
+
+      if(auth.data.user) {
+        this.authService.isAuthenticated$.next(true);
+      } else {
+        this.authService.isAuthenticated$.next(false);
+      }
     });
   }
 }

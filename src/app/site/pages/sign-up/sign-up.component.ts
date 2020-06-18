@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FormGroup, FormControl } from '@angular/forms'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'site-sign-up',
@@ -11,7 +12,8 @@ export class SignUpComponent implements OnInit {
   public signUpForm;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -25,11 +27,15 @@ export class SignUpComponent implements OnInit {
   }
 
   submit() {
-    console.log('sss', this.signUpForm.value);
     const { name, email, password, passwordConfirm, photo } = this.signUpForm.value;
     this.authService.signUp({ name, email, password, photo }).subscribe(auth => {
       this.authService.user$.next(auth.data.user);
-      console.log('auth', auth);
+      if(auth.data.user) {
+        this.authService.isAuthenticated$.next(true);
+      } else {
+        this.authService.isAuthenticated$.next(false);
+      }
+      this.router.navigate(['/']);
     });
   }
 }
