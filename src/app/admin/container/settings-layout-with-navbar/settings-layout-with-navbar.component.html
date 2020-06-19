@@ -1,9 +1,10 @@
-<div class="settings-layout-with-navbar-container" [ngClass]="{'column': widthWithoutSidebar <= 800}">
-  <div class="content">
+<div class="settings-layout-with-navbar-container" [ngClass]="{'column': widthWithoutSidebar <= 900}">
+  <div class="content" [ngClass]="{'column__content': widthWithoutSidebar <= 900}">
     <router-outlet></router-outlet>
   </div>
-  <div class="sidebar" [ngClass]="{'column__order column__height column__row': widthWithoutSidebar <= 800}">
+  <div class="sidebar" [ngClass]="{'column__order column__height column__row': widthWithoutSidebar <= 900}">
     <span class="nav-link" [routerLink]="['/admin/settings']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="router-link-active" >Main</span>
     <span class="nav-link" [routerLink]="['/admin/settings/edit']" routerLinkActive="router-link-active" >Edit</span>
+    <span class="nav-link" [routerLink]="['/admin/settings/change-password']" routerLinkActive="router-link-active" >Change Password</span>
   </div>
 </div>

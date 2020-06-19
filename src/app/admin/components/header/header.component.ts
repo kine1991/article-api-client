@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ResizedEvent } from 'angular-resize-event';
 import { ResponsiveService } from '../../services/responsive.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-header',
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private responsiveService: ResponsiveService,
+    private router: Router
   ) {
   }
 
@@ -38,7 +40,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout().subscribe(auth => {
       this.authService.user$.next(auth.data.user);
-      // this.authService.isAuthenticated$.next(false);
+      this.authService.isAuthenticated$.next(false);
+      this.router.navigate(['/']);
     });
 
   }

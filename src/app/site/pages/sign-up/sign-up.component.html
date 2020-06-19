@@ -3,26 +3,43 @@
   <div class="sign-up">
     <h1 class="title">Sign Up</h1>
     <form class="form" [formGroup]="signUpForm" (ngSubmit)="submit()">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
+        <mat-error *ngIf="signUpForm.get('name').invalid && signUpForm.get('name').touched">
+          <span *ngIf="signUpForm.get('name').errors.maxlength">name should be less than {{signUpForm.get('name').errors.maxlength.requiredLength}} characters, you enter {{signUpForm.get('name').errors.maxlength.actualLength}}</span>
+          <span *ngIf="signUpForm.get('name').errors.minlength">name should be greather than {{signUpForm.get('name').errors.minlength.requiredLength}} characters, you enter {{signUpForm.get('name').errors.minlength.actualLength}}</span>
+          <span *ngIf="signUpForm.get('name').errors.required">name is required</span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
+        <mat-error *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched">
+          <span *ngIf="signUpForm.get('email').errors.email">do not match to email format</span>
+          <span *ngIf="signUpForm.get('email').errors.required">email is required</span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password">
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched">
+          <span *ngIf="signUpForm.get('password').errors.maxlength">password should be less than {{signUpForm.get('password').errors.maxlength.requiredLength}} characters, you enter {{signUpForm.get('password').errors.maxlength.actualLength}}</span>
+          <span *ngIf="signUpForm.get('password').errors.minlength">password should be greather than {{signUpForm.get('password').errors.minlength.requiredLength}} characters, you enter {{signUpForm.get('password').errors.minlength.actualLength}}</span>
+          <span *ngIf="signUpForm.get('password').errors.required">password is required</span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Password Confirm</mat-label>
-        <input matInput formControlName="passwordConfirm">
+        <input type="password" matInput formControlName="passwordConfirm">
+        <mat-error *ngIf="signUpForm.get('passwordConfirm').invalid && signUpForm.get('passwordConfirm').touched">
+          <span *ngIf="signUpForm.get('passwordConfirm').errors.notEqual">Password confirm do not match</span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="outline">
         <mat-label>Photo</mat-label>
         <input matInput formControlName="photo">
-      </mat-form-field>
+      </mat-form-field> -->
       <button mat-raised-button color="primary">Submit</button>
     </form>
   </div>

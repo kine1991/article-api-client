@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'site-header',
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
   public isOpenSideBar = false;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -24,6 +26,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout().subscribe(auth => {
       this.authService.user$.next(auth.data.user);
       this.authService.isAuthenticated$.next(false);
+      // this.router.navigate(['/']);
     });
   }
 

@@ -32,7 +32,6 @@
             <span *ngIf="userForm.get('photo').errors.required">photo is required</span>
           </mat-error>
         </mat-form-field>
-        <!-- <div class="image-preview" *ngIf="imagePreview || userForm.get('photo').valid"> -->
           <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview !== null && userForm.get('photo').valid">
             <img [src]="imagePreview" [alt]="userForm.get('title')">
         </div>
@@ -43,8 +42,6 @@
           <input type="file" #filePicker (change)="onImagePicked($event)">
         </div>
         <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview !== null && userForm.get('photo').valid">
-        <!-- <div class="image-preview" *ngIf="imagePreview !== '' || imagePreview || userForm.get('photo').valid"> -->
-          <!-- <p *ngIf="imagePreview">{{imagePreview}}</p> -->
           <img [src]="imagePreview" [alt]="userForm.get('title')">
         </div>
       </div>
@@ -52,6 +49,3 @@
     <button mat-stroked-button color="primary" type="submit">Edit</button>
   </form>
 </div>
-
-<pre *ngIf="userForm">{{userForm.value | json}}</pre>
-

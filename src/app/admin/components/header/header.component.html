@@ -1,7 +1,7 @@
 <mat-drawer-container class="sidebar-container" (backdropClick)="isOpenSideBar = false" (resized)="onResized($event)">
   <mat-drawer [mode]="currentWidth <= 768 ? 'over' : 'side'"[opened]="isOpenSideBar">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/publishers']">Publishers</a>
+      <a mat-list-item [routerLink]="['/admin']">Publishers</a>
       <a mat-list-item [routerLink]="['/admin/articles']">Articles</a>
       <a mat-list-item [routerLink]="['/admin/settings']">Settings</a>
     </mat-nav-list>

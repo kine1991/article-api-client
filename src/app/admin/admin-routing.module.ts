@@ -7,6 +7,7 @@ import { AdminComponent } from './container/admin/admin.component';
 import { SettingsLayoutWithNavbarComponent } from './container/settings-layout-with-navbar/settings-layout-with-navbar.component';
 import { SettingsMainComponent } from './pages/settings-main/settings-main.component';
 import { SettingsEditComponent } from './pages/settings-edit/settings-edit.component';
+import { SettingsChangePasswordComponent } from './pages/settings-change-password/settings-change-password.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
           {
             path: 'edit',
             component: SettingsEditComponent
+          },
+          {
+            path: 'change-password',
+            component: SettingsChangePasswordComponent
           },
         ]
       }

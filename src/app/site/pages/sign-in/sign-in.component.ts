@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -18,8 +18,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      email: new FormControl('test1@mail.ru'),
-      password: new FormControl('123456')
+      email: new FormControl('test1@mail.ru', [Validators.required, Validators.email]),
+      password: new FormControl('123456', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
     });
   }
 

@@ -24,7 +24,7 @@
   text-transform: uppercase;
   font-weight: 500;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background: rgb(241, 240, 234);
   border-radius: 6px;
   margin: 3rem 2rem;
@@ -82,4 +82,10 @@
 .column__row {
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 1rem 2rem;
+}
+
+
+.column__content {
+  margin: 1rem 2rem;
 }

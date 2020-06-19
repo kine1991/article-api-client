@@ -3,13 +3,22 @@
   <div class="sign-in">
     <h1 class="title">Sign In</h1>
     <form class="form" [formGroup]="signInForm" (ngSubmit)="submit()">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
+        <mat-error *ngIf="signInForm.get('email').invalid && signInForm.get('email').touched">
+          <span *ngIf="signInForm.get('email').errors.email">do not match to email format</span>
+          <span *ngIf="signInForm.get('email').errors.required">email is required</span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password">
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="signInForm.get('password').invalid && signInForm.get('password').touched">
+          <span *ngIf="signInForm.get('password').errors.maxlength">password should be less than {{signInForm.get('password').errors.maxlength.requiredLength}} characters, you enter {{signInForm.get('password').errors.maxlength.actualLength}}</span>
+          <span *ngIf="signInForm.get('password').errors.minlength">password should be greather than {{signInForm.get('password').errors.minlength.requiredLength}} characters, you enter {{signInForm.get('password').errors.minlength.actualLength}}</span>
+          <span *ngIf="signInForm.get('password').errors.required">password is required</span>
+        </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary">Submit</button>
     </form>
