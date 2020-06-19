@@ -55,4 +55,10 @@ export class UserService {
       withCredentials: true
     })
   }
+
+  changePassword(data) {
+    return this.http.patch(`${environment.url}/users/change-password`, data, {
+      withCredentials: true
+    })
+  }
 }

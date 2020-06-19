@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
 
   private validateAreEqual(fieldControl: FormControl) {
     if(this.signUpForm) {
-      return fieldControl.value === this.signUpForm.get("password").value ? null : {
+      return fieldControl.value === this.signUpForm.get('password').value ? null : {
         notEqual: true
       };
     }
