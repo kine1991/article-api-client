@@ -1,0 +1,13 @@
+<div class="comments-container">
+  <mat-divider></mat-divider>
+  <h1 class="title">comments: <span>{{commentsCount}}</span></h1>
+  <site-comment-create (onCreateComment)="reloadComment()" [articleId]="articleId"></site-comment-create>
+  <ng-container *ngFor="let comment of comments">
+    <!-- <site-comment-card></site-comment-card> -->
+    <pre>{{comment | json}}</pre>
+    <hr>
+  </ng-container>
+</div>
+
+
+<!-- <pre *ngIf="comments">{{comments | json}}</pre> -->

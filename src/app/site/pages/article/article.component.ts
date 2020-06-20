@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(({ params }: Params) => {
-      this.siteService.getArticle(params.id).subscribe(article => {
+      this.siteService.getArticle(params.articleId).subscribe(article => {
         this.article = article.data.article;
       })
     });

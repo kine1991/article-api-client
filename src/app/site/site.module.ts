@@ -15,6 +15,9 @@ import { PublisherComponent } from './pages/publisher/publisher.component';
 import { PublishersComponent } from './pages/publishers/publishers.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
+import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 
 
 
@@ -31,7 +34,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     PublisherComponent, 
     PublishersComponent, 
     SignInComponent, 
-    SignUpComponent,
+    SignUpComponent, CommentsComponent, CommentCardComponent, CommentCreateComponent,
   ],
   imports: [
     CommonModule,
