@@ -20,7 +20,7 @@ import { AuthInterceptor } from '../interceptors/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    AngularResizedEventModule
+    AngularResizedEventModule,
   ],
   // providers: [
   //   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
@@ -32,7 +32,7 @@ import { AuthInterceptor } from '../interceptors/auth.interceptor';
     AngularMaterialModule,
     SpinnerComponent,
     PageNotFoundComponent,
-    AngularResizedEventModule
+    AngularResizedEventModule,
   ]
 })
 export class SharedModule { }

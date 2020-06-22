@@ -1,1 +1,13 @@
-<p>comment-card works!</p>
+<div class="comment-card">
+  <div class="comment-card__left">
+    <img [src]="comment.user.photo" [alt]="comment.user.name" class="photo">
+  </div>
+  <div class="comment-card__right">
+    <div class="nd-container">
+      <div class="nd-container__name">{{comment.user.name}}</div>
+      <div class="nd-container__date">{{comment.createdAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
+    </div>
+    <div class="content">{{comment.comment}}</div>
+  </div>
+</div>
+<!-- <pre>{{comment | json}}</pre> -->

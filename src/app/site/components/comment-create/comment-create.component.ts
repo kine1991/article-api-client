@@ -30,6 +30,7 @@ export class CommentCreateComponent implements OnInit {
       this.commentService.createComment({ articleId: this.articleId, comment: this.comment}).subscribe(data => {
         console.log('data', data);
         this.onCreateComment.emit();
+        this.comment = undefined;
       });
     }
     console.log('comment', this.comment);

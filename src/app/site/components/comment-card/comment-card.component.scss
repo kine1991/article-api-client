@@ -1,0 +1,53 @@
+.comment-card {
+  padding: 2rem;
+  display: flex;
+
+  &__left {
+    flex-basis: 48px;
+    margin-right: 2rem;
+
+    @media (max-width: 600px) {
+      margin-right: 0.1rem;
+    }
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  @media (max-width: 700px) {
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 600px) {
+    padding: 2rem 0.2rem;
+  }
+}
+
+.nd-container {
+  display: flex;
+  margin-bottom: 0.4rem;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  &__name {
+    font-weight: 400;
+  }
+  &__date {
+    margin-left: 1rem;
+    color: gray;
+    @media (max-width: 600px) {
+      margin-left: 0;
+    }
+  }
+}
+
+.photo {
+  width: 48px;
+  height: 48px;
+
+  @media (max-width: 600px) {
+    width: 32px;
+    height: 32px;
+  }
+}

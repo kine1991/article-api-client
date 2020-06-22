@@ -34,7 +34,10 @@ import { CommentCreateComponent } from './components/comment-create/comment-crea
     PublisherComponent, 
     PublishersComponent, 
     SignInComponent, 
-    SignUpComponent, CommentsComponent, CommentCardComponent, CommentCreateComponent,
+    SignUpComponent, 
+    CommentsComponent, 
+    CommentCardComponent, 
+    CommentCreateComponent,
   ],
   imports: [
     CommonModule,
