@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 export interface CommentsResponse {
@@ -46,8 +46,13 @@ export class CommentService {
     private http: HttpClient
   ) { }
 
-  getCommentsByArcicle(articleId) {
-    return this.http.get<CommentsResponse>(`${environment.url}/articles/${articleId}/comments`);
+  getCommentsByArcicle({ articleId, limit, sort }) {
+    let params = new HttpParams();
+    if(limit) params = params.append('limit', limit);
+    if(sort) params = params.append('sort', sort);
+    return this.http.get<CommentsResponse>(`${environment.url}/articles/${articleId}/comments`, {
+      params
+    });
   }
 
   createComment({ articleId, comment }) {

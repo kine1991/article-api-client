@@ -10,8 +10,12 @@ import { CommentService } from '../../services/comment.service';
 })
 export class CommentsComponent implements OnInit {
   public comments;
-  public commentsCount;
   public articleId;
+  public commentsCount;
+
+  public sort;
+  public limit = 10;
+  public selectedSort = 'new';
 
   constructor(
     private route: ActivatedRoute,
@@ -21,14 +25,12 @@ export class CommentsComponent implements OnInit {
   getComments() {
     this.route.paramMap.pipe(
       switchMap((params: Params) => {
-        console.log('a', params);
         this.articleId = params.get('articleId');
-        return this.commentService.getCommentsByArcicle(params.get('articleId'))
+        return this.commentService.getCommentsByArcicle({ articleId: params.get('articleId'), limit: this.limit, sort: this.sort });
       })
     ).subscribe((data) => {
       this.comments = data.data.comments;
-      this.commentsCount = data.results;
-      console.log('data', data.data.comments);
+      this.commentsCount = data.allResults;
     });
   }
 
@@ -39,5 +41,21 @@ export class CommentsComponent implements OnInit {
   reloadComment() {
     this.getComments();
   }
+
+  moreComments() {
+    this.limit = this.limit + 10;
+    this.getComments();
+  }
+
+  sortBy(event) {
+    if(this.selectedSort !== event){
+      this.limit = 10;
+      this.selectedSort = event;
+      if (this.selectedSort === 'old') this.sort = 'createdAt';
+      if (this.selectedSort === 'new') this.sort = '-createdAt';
+      this.getComments();
+    }
+  }
+
 
 }

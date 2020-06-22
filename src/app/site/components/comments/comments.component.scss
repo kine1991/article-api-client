@@ -3,5 +3,20 @@
 }
 
 .title {
+  margin-right: 2rem;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.ts-container {
+  display: flex;
   margin-top: 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.selected-date {
+  background-color: whitesmoke;
 }

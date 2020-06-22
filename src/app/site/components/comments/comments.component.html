@@ -1,8 +1,20 @@
 <div class="comments-container">
   <mat-divider></mat-divider>
-  <h1 class="title">comments: <span>{{commentsCount}}</span></h1>
+  <div class="ts-container">
+    <h1 class="title">comments: <span>{{commentsCount}}</span></h1>
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu"> <mat-icon>sort</mat-icon> Sort By</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [ngClass]="{'selected-date': selectedSort === 'new'}"  (click)="sortBy('new')">new comments first</button>
+        <button mat-menu-item [ngClass]="{'selected-date': selectedSort === 'old'}"  (click)="sortBy('old')">old comments first</button>
+      </mat-menu>
+    </div>
+  </div>
   <site-comment-create (onCreateComment)="reloadComment()" [articleId]="articleId"></site-comment-create>
   <ng-container *ngFor="let comment of comments">
     <site-comment-card [comment]="comment"></site-comment-card>
   </ng-container>
+  <div class="btn-container">
+    <button mat-stroked-button color="primary" *ngIf="commentsCount > limit"  (click)="moreComments()" type="button">More comments</button>
+  </div>
 </div>
