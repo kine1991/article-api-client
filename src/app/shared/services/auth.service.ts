@@ -47,7 +47,7 @@ export interface SignResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  public user$ = new BehaviorSubject(null);
+  public user$ = new BehaviorSubject<User | null>(null);
   public isAuthenticated$ = new BehaviorSubject(null);
 
   constructor(

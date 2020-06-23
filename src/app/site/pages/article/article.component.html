@@ -1,6 +1,14 @@
 <div class="article-container" *ngIf="article; else spinnerRef">
   <div class="category">Category: <span [routerLink]="['/term/category', article.category]" class="helper-highlight">{{ article.category }}</span></div>
   <div class="title">{{ article.title }}</div>
+  <div class="like">
+    <button (click)="likesArticle()" [disabled]="!currentUser" mat-icon-button>
+      <mat-icon *ngIf="!isLike" class="like__icon">star_outline</mat-icon>
+      <mat-icon *ngIf="isLike" class="like__icon-selected">star</mat-icon>
+    </button>
+    <span>{{countLikes}}</span>
+  </div>
+
   <div class="author">Author: <span [routerLink]="['/term/author', article.author]" class="helper-highlight">{{ article.author }}</span></div>
   <div class="publisher">
     <div class="publisher__image">

@@ -63,6 +63,7 @@ export interface Article {
   imageUrl?: string,
   imagesUrl?: string[] | [],
   private?: boolean,
+  likes?: [string],
   createdAt?: "2020-05-30T12:54:49.710Z"
   updatedAt?: "2020-05-30T12:54:49.710Z"
   _id?: string,
@@ -113,5 +114,11 @@ export class SiteService {
 
   getPublisher(id) {
     return this.http.get<GetPublisherResponse>(`${environment.url}/users/${id}`);
+  }
+
+  likesArticle(articleId) {
+    return this.http.get<GetArticleResponse>(`${environment.url}/articles/like/${articleId}`, {
+      withCredentials: true
+    });
   }
 }
