@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SiteService } from '../../services/site.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'site-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, OnDestroy {
+  public authSubscription: Subscription;
+
   public article;
   public countLikes;
+  public countComments;
   public isLike:any = undefined;
   public articleId;
   public currentUser;
@@ -24,12 +28,17 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.isAuthenticated$.subscribe(isAuth => {
+    this.authSubscription = this.authService.isAuthenticated$.subscribe(isAuth => {
       // console.log('isAuth', isAuth);
       if(isAuth) {
         this.authService.user$.subscribe(user => {
-          this.currentUser = user;
-          this.getArticle(user._id);
+          if(user) {
+            this.currentUser = user;
+            this.getArticle(user._id);
+          } else {
+            this.currentUser = null;
+            this.getArticle();
+          }
         });
       } else {
         this.getArticle();
@@ -54,15 +63,30 @@ export class ArticleComponent implements OnInit {
 
 
   likesArticle() {
-    this.siteService.likesArticle(this.articleId).subscribe(article => {
-      console.log('art', article.data.article.likes);
-      // this.article.likes
-      this.countLikes = article.data.article.likes ? article.data.article.likes.length : 0;
-      if(this.currentUser) {
-        this.isLike = article.data.article.likes ? article.data.article.likes.includes(this.currentUser.id) : false;
-      } else {
-        this.isLike = false;
-      }
-    });
+    if(this.currentUser) {
+      this.siteService.likesArticle(this.articleId).subscribe(article => {
+        // this.article.likes
+        this.countLikes = article.data.article.likes ? article.data.article.likes.length : 0;
+        if(this.currentUser) {
+          this.isLike = article.data.article.likes ? article.data.article.likes.includes(this.currentUser.id) : false;
+        } else {
+          this.isLike = false;
+        }
+      });
+    } else {
+      this.router.navigate(['sign-in']);
+    }
+  }
+
+  getCountComments(count) {
+    this.countComments = count;
+  }
+
+  scroll(el: HTMLElement) {
+    console.log('el', el)
+  }
+
+  ngOnDestroy() {
+    if(this.authSubscription) this.authSubscription.unsubscribe();
   }
 }

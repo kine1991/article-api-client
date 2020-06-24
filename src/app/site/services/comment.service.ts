@@ -60,4 +60,10 @@ export class CommentService {
       withCredentials: true
     });
   }
+
+  updateComment({ articleId, commentId, comment}) {
+    return this.http.patch<CommentResponse>(`${environment.url}/articles/${articleId}/comments/${commentId}`, { comment }, {
+      withCredentials: true
+    });
+  }
 }

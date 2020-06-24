@@ -5,9 +5,31 @@
   <div class="comment-card__right">
     <div class="nd-container">
       <div class="nd-container__name">{{comment.user.name}}</div>
-      <div class="nd-container__date">{{comment.createdAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
+      <div class="nd-container__date" *ngIf="comment.createdAt && comment.updatedAt === undefined">{{comment.createdAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
+      <div class="nd-container__date" *ngIf="comment.createdAt && comment.updatedAt">updated: {{comment.updatedAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
     </div>
-    <div class="content">{{comment.comment}}</div>
+    <div *ngIf="!isEdit" class="action-container">
+      <mat-icon class="icon icon__like">favorite</mat-icon>
+      <ng-container *ngIf="currentUser.id === comment.user.id">
+        <mat-icon (click)="isEdit = true; commentContent = comment.comment;" class="icon icon__edit">edit</mat-icon>
+        <mat-icon (click)="deleteComment(comment._id)" class="icon icon__delete">delete</mat-icon>
+      </ng-container>
+    </div>
+    <div class="edit-form" *ngIf="isEdit">
+      <mat-form-field class="full-width">
+        <mat-label>change comment</mat-label>
+        <input matInput placeholder="enter your comment" [(ngModel)]="commentContent">
+      </mat-form-field>
+      <div class="btn-container">
+        <button (click)="isEdit = false; commentContent = comment.comment" mat-button color="default">Cancel</button>
+        <button (click)="updateComment(comment._id)" mat-button color="primary">Save</button>
+      </div>
+    </div>
+    <div *ngIf="!isEdit" class="content">{{comment.comment}}</div>
   </div>
 </div>
 <!-- <pre>{{comment | json}}</pre> -->
+<!-- commentContent: {{commentContent}}
+articleId: {{articleId}}
+
+comment <pre>{{comment | json}}</pre> -->

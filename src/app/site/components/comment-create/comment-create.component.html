@@ -1,4 +1,4 @@
-<div class="comment-create-container">
+<div class="comment-create-container" *ngIf="user">
   <div class="left-side">
     <img [src]="user.photo" [alt]="user.name" class="photo">
   </div>
@@ -15,5 +15,3 @@
     <button mat-stroked-button color="primary" (click)="createComment()" type="button">Leave a comment</button>
   </div>
 </div>
-<!-- {{comment}}
-{{articleId}} -->

@@ -1,13 +1,21 @@
+<!-- <div (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })">222</div> -->
 <div class="article-container" *ngIf="article; else spinnerRef">
-  <div class="category">Category: <span [routerLink]="['/term/category', article.category]" class="helper-highlight">{{ article.category }}</span></div>
+  <div class="category" #myTopElement>Category: <span [routerLink]="['/term/category', article.category]" class="helper-highlight">{{ article.category }}</span></div>
   <div class="title">{{ article.title }}</div>
   <mat-divider></mat-divider>
-  <div class="like">
-    <button *ngIf="isLike !== undefined" (click)="likesArticle()" [disabled]="!currentUser" mat-icon-button>
-      <mat-icon *ngIf="isLike === false" class="favorite-border">favorite_border</mat-icon>
-      <mat-icon *ngIf="isLike === true" color="warn">favorite</mat-icon>
-    </button>
-    <span class="count">{{countLikes}}</span>
+  <div class="like-wrap" *ngIf="isLike !== undefined && countComments !== undefined">
+    <div class="like" *ngIf="isLike !== undefined">
+      <button *ngIf="isLike !== undefined" (click)="likesArticle()" mat-icon-button>
+        <mat-icon *ngIf="isLike === false" class="favorite-border">favorite_border</mat-icon>
+        <mat-icon *ngIf="isLike === true" color="warn">favorite</mat-icon>
+      </button>
+      <span class="count">{{countLikes}}</span>
+    </div>
+    <div class="comment" (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })">
+      <mat-icon class="comment__icon">chat_bubble_outline</mat-icon>
+      <span class="comment__count">{{countComments}}</span>
+    </div>
+
   </div>
   <mat-divider></mat-divider>
   <div class="author">Author: <span [routerLink]="['/term/author', article.author]" class="helper-highlight">{{ article.author }}</span></div>
@@ -33,7 +41,9 @@
       <mat-icon>remove</mat-icon>
     </button>
   </div>
-  <site-comments></site-comments>
+</div>
+<div id="comments" #element>
+  <site-comments (onGetCountComments)="getCountComments($event)"></site-comments>
 </div>
 
 <ng-template #spinnerRef>
@@ -41,3 +51,12 @@
     <shared-spinner></shared-spinner>
   </div>
 </ng-template>
+
+
+<!-- <div (click)="myTopElement.scrollIntoView({ behavior: 'smooth', block: 'start' })">>fff</div> -->
+<!-- <div class="other-content">
+  Other content
+  <button (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })">
+    Click to scroll
+  </button>
+</div> -->

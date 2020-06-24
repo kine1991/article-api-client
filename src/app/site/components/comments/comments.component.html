@@ -12,7 +12,7 @@
   </div>
   <site-comment-create (onCreateComment)="reloadComment()" [articleId]="articleId"></site-comment-create>
   <ng-container *ngFor="let comment of comments">
-    <site-comment-card [comment]="comment"></site-comment-card>
+    <site-comment-card [comment]="comment" [articleId]="articleId"></site-comment-card>
   </ng-container>
   <div class="btn-container">
     <button mat-stroked-button color="primary" *ngIf="commentsCount > limit"  (click)="moreComments()" type="button">More comments</button>

@@ -52,3 +52,42 @@
     height: 32px;
   }
 }
+
+
+.icon {
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+
+  &__like {
+    &:hover {
+      color: #0275d8;
+    }
+  }
+  &__edit {
+    &:hover {
+      color: #f0ad4e;
+    }
+  }
+  &__delete {
+    &:hover {
+      color: #f44336;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.edit-form {
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin-right: 1rem;
+}

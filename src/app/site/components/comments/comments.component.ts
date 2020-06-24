@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CommentService } from '../../services/comment.service';
@@ -9,6 +9,7 @@ import { CommentService } from '../../services/comment.service';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
+  @Output() public onGetCountComments = new EventEmitter();
   public comments;
   public articleId;
   public commentsCount;
@@ -31,6 +32,7 @@ export class CommentsComponent implements OnInit {
     ).subscribe((data) => {
       this.comments = data.data.comments;
       this.commentsCount = data.allResults;
+      this.onGetCountComments.emit(data.allResults);
     });
   }
 

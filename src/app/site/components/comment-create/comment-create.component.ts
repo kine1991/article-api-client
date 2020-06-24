@@ -19,20 +19,18 @@ export class CommentCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.user$.subscribe(auth => {
-      console.log('user', auth);
-      this.user = auth;
+    // this.authService.isAuthenticated$.subscribe(auth => )
+    this.authService.user$.subscribe(user => {
+      this.user = user;
     });
   }
 
   createComment() {
     if(this.comment) {
       this.commentService.createComment({ articleId: this.articleId, comment: this.comment}).subscribe(data => {
-        console.log('data', data);
         this.onCreateComment.emit();
         this.comment = undefined;
       });
     }
-    console.log('comment', this.comment);
   }
 }

@@ -3,7 +3,6 @@
   margin: 0 auto;
   padding-top: 2rem;
   position: relative;
-  // background: orangered;
 
   @media (max-width: 800px) {
     padding: 1rem;
@@ -142,3 +141,28 @@
   color: gray;
 }
 
+.comment {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__icon {
+    padding-top: 3px;
+    color: gray;
+  }
+
+  &__count {
+    margin-left: 0.6rem;
+  }
+}
+
+#comments {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 1rem;
+
+  @media (max-width: 800px) {
+    padding: 1rem;
+  }
+}
