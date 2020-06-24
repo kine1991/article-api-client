@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class ArticleComponent implements OnInit {
   public article;
   public countLikes;
-  public isLike;
+  public isLike:any = undefined;
   public articleId;
   public currentUser;
   public largeText = false;
@@ -22,41 +22,6 @@ export class ArticleComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) { }
-
-  // ngOnInit() {
-  //   this.authService.user$.subscribe(auth => {
-  //     console.log('***auth', auth);
-  //     const currentUserId = auth.id;
-  //     this.currentUserId = currentUserId;
-  //     console.log('currentUserId', currentUserId);
-
-    //   this.route.paramMap.subscribe(({ params }: Params) => {
-    //     this.articleId = params.articleId;
-    //     this.siteService.getArticle(params.articleId).subscribe(article => {
-    //       this.article = article.data.article;
-    //       this.countLikes = this.article.likes ? this.article.likes.length : 0;
-    //       if(currentUserId) {
-    //         this.isLike = this.article.likes ? this.article.likes.includes(currentUserId) : false;
-    //       } else {
-    //         this.isLike = false;
-    //       }
-    //     });
-    //   });
-    // });
-
-  // }
-  
-  // likesArticle() {
-    // this.siteService.likesArticle(this.articleId).subscribe(article => {
-    //   console.log('art', article);
-    //   this.countLikes = this.article.likes ? this.article.likes.length : 0;
-    //   if(this.currentUserId) {
-    //     this.isLike = this.article.likes ? this.article.likes.includes(this.currentUserId) : false;
-    //   } else {
-    //     this.isLike = false;
-    //   }
-    // });
-  // }
 
   ngOnInit() {
     this.authService.isAuthenticated$.subscribe(isAuth => {

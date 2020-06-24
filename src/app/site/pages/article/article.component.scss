@@ -129,22 +129,16 @@
   align-items: center;
 }
 
-.like {
+.like-wrap {
   display: flex;
   align-items: center;
+}
 
-  &__icon {
-    // color: rgb(228, 216, 47);
-    // color: #c69963;
-    // color: rgb(228, 216, 47);
-  }
+.count {
+  margin-left: 0.3rem;
+}
 
-  &__icon-selected {
-    color: rgb(228, 216, 47);
-  }
-
-  &__number {
-    font-size: 16px;
-  }
+.favorite-border {
+  color: gray;
 }
 
