@@ -61,9 +61,15 @@ export class CommentService {
     });
   }
 
-  updateComment({ articleId, commentId, comment}) {
-    return this.http.patch<CommentResponse>(`${environment.url}/articles/${articleId}/comments/${commentId}`, { comment }, {
+  updateComment({ commentId, comment}) {
+    return this.http.patch<CommentResponse>(`${environment.url}/comments/${commentId}`, { comment }, {
       withCredentials: true
     });
+  }
+
+  deleteComment(commentId) {
+    return this.http.delete(`${environment.url}/comments/${commentId}`, {
+      withCredentials: true
+    })
   }
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CommentService } from 'src/app/site/services/comment.service';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteCommentDialogComponent } from '../delete-comment-dialog/delete-comment-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'site-comment-card',
@@ -10,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class CommentCardComponent implements OnInit, OnDestroy {
   @Input() public comment;
-  @Input() public articleId;
+  @Output() public onDeleteComment = new EventEmitter();
   public authSubscription: Subscription;
   public currentUser;
   public commentContent;
@@ -18,7 +21,9 @@ export class CommentCardComponent implements OnInit, OnDestroy {
   
   constructor(
     private authService: AuthService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -28,20 +33,25 @@ export class CommentCardComponent implements OnInit, OnDestroy {
   }
 
   updateComment(commentId) {
-    // console.log('@', this.articleId, commentId, this.commentContent);
-    this.commentService.updateComment({ 
-      articleId: this.articleId, 
-      commentId, 
-      comment: this.commentContent
-    }).subscribe(comment => {
+    this.commentService.updateComment({ commentId, comment: this.commentContent }).subscribe(comment => {
       this.comment = comment.data.comment;
-      this.isEdit = false
-      console.log('updateComment', comment);
+      this.isEdit = false;
+      this._snackBar.open('comment was updated', 'close', { duration: 4000 });
     });
   }
 
   deleteComment(commentId) {
     console.log(commentId);
+    const dialogRef = this.dialog.open(DeleteCommentDialogComponent, {
+      width: '300px',
+      data: { commentId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === 'reload') {
+        this.onDeleteComment.emit();
+      }
+    });
   }
 
   ngOnDestroy() {

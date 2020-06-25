@@ -18,6 +18,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CommentCreateComponent } from './components/comment-create/comment-create.component';
+import { DeleteCommentDialogComponent } from './components/delete-comment-dialog/delete-comment-dialog.component';
 
 
 
@@ -37,7 +38,7 @@ import { CommentCreateComponent } from './components/comment-create/comment-crea
     SignUpComponent, 
     CommentsComponent, 
     CommentCardComponent, 
-    CommentCreateComponent,
+    CommentCreateComponent, DeleteCommentDialogComponent,
   ],
   imports: [
     CommonModule,
