@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteCommentDialogComponent } from '../delete-comment-dialog/delete-comment-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'site-comment-card',
@@ -21,6 +22,7 @@ export class CommentCardComponent implements OnInit, OnDestroy {
   
   constructor(
     private authService: AuthService,
+    private router: Router,
     private commentService: CommentService,
     private dialog: MatDialog,
     private _snackBar: MatSnackBar
@@ -41,7 +43,6 @@ export class CommentCardComponent implements OnInit, OnDestroy {
   }
 
   deleteComment(commentId) {
-    console.log(commentId);
     const dialogRef = this.dialog.open(DeleteCommentDialogComponent, {
       width: '300px',
       data: { commentId }
@@ -52,6 +53,16 @@ export class CommentCardComponent implements OnInit, OnDestroy {
         this.onDeleteComment.emit();
       }
     });
+  }
+
+  likeComment(commentId) {
+    if(this.currentUser) {
+      this.commentService.likeComment(commentId).subscribe(comment => {
+        this.comment.likes = comment.data.comment.likes;
+      });
+    } else {
+      this.router.navigate(['sign-in']);
+    }
   }
 
   ngOnDestroy() {

@@ -32,6 +32,16 @@
   }
   &__name {
     font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: orange;
+    }
+
+    &:focus {
+      outline: 0;
+    }
   }
   &__date {
     margin-left: 1rem;
@@ -53,6 +63,26 @@
   }
 }
 
+.count {
+  font-size: 10px;
+  color: gray;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 3px;
+}
+
+.action-container {
+  display: flex;
+}
+
+mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .icon {
   font-size: 14px;
@@ -60,6 +90,9 @@
   cursor: pointer;
 
   &__like {
+    display: flex;
+    // align-items: baseline;
+    height: 100%;
     &:hover {
       color: #0275d8;
     }

@@ -11,10 +11,24 @@
     </div>
   </div>
   <site-comment-create (onCreateComment)="reloadComment()" [articleId]="articleId"></site-comment-create>
-  <ng-container *ngFor="let comment of comments">
-    <site-comment-card [comment]="comment" (onDeleteComment)="reloadComment()"></site-comment-card>
+  <ng-container *ngIf="isLoadedComment;else templateSpinner">
+    <ng-container *ngIf="isLoadedComment && comments.length !== 0;else templateComments">
+      <ng-container *ngFor="let comment of comments">
+        <site-comment-card [comment]="comment" (onDeleteComment)="reloadComment()"></site-comment-card>
+      </ng-container>
+      <div class="btn-container">
+        <button mat-stroked-button color="primary" *ngIf="commentsCount > limit"  (click)="moreComments()" type="button">More comments</button>
+      </div>
+    </ng-container>
   </ng-container>
-  <div class="btn-container">
-    <button mat-stroked-button color="primary" *ngIf="commentsCount > limit"  (click)="moreComments()" type="button">More comments</button>
-  </div>
+  <ng-template #templateSpinner>
+    <div class="spinner-container">
+      <shared-spinner [size]="'xs'"></shared-spinner>
+    </div>
+  </ng-template>
+  <ng-template #templateComments>
+    <div class="no-data-container">
+      <h1>No Comments</h1>
+    </div>
+  </ng-template>
 </div>

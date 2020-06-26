@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, delay } from 'rxjs/operators';
 import { CommentService } from '../../services/comment.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { CommentService } from '../../services/comment.service';
 export class CommentsComponent implements OnInit {
   @Output() public onGetCountComments = new EventEmitter();
   public comments;
+  public isLoadedComment;
   public articleId;
   public commentsCount;
 
@@ -24,13 +25,18 @@ export class CommentsComponent implements OnInit {
   ) { }
 
   getComments() {
+    this.isLoadedComment = false;
     this.route.paramMap.pipe(
       switchMap((params: Params) => {
         this.articleId = params.get('articleId');
         return this.commentService.getCommentsByArcicle({ articleId: params.get('articleId'), limit: this.limit, sort: this.sort });
       })
+    ).pipe(
+      delay(500)
     ).subscribe((data) => {
+      this.isLoadedComment = true;
       this.comments = data.data.comments;
+      console.log('comments', data.data.comments);
       this.commentsCount = data.allResults;
       this.onGetCountComments.emit(data.allResults);
     });

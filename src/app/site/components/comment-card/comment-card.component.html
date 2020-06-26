@@ -4,13 +4,16 @@
   </div>
   <div class="comment-card__right">
     <div class="nd-container">
-      <div class="nd-container__name">{{comment.user.name}}</div>
+      <div class="nd-container__name" [routerLink]="['/publishers', comment.user._id]">{{comment.user.name}}</div>
       <div class="nd-container__date" *ngIf="comment.createdAt && comment.updatedAt === undefined">{{comment.createdAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
       <div class="nd-container__date" *ngIf="comment.createdAt && comment.updatedAt">updated: {{comment.updatedAt | date: 'dd.MM.yyyy | HH:mm'}}</div>
     </div>
     <div *ngIf="!isEdit" class="action-container">
-      <mat-icon class="icon icon__like">favorite</mat-icon>
-      <ng-container *ngIf="currentUser.id === comment.user.id">
+      <span class="icon__like">
+        <mat-icon (click)="likeComment(comment._id)" class="icon" [ngStyle]="(currentUser ? comment.likes.includes(currentUser._id) : false) && {color: '#0275d8'}">favorite</mat-icon>
+        <div class="count">{{comment.likes.length}}</div>
+      </span>
+      <ng-container *ngIf="currentUser ? currentUser.id === comment.user.id : false">
         <mat-icon (click)="isEdit = true; commentContent = comment.comment;" class="icon icon__edit">edit</mat-icon>
         <mat-icon (click)="deleteComment(comment._id)" class="icon icon__delete">delete</mat-icon>
       </ng-container>

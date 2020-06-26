@@ -26,6 +26,7 @@ interface Comment {
   user: User;
   createdAt: Date;
   updatedAt: Date;
+  likes: [string];
 }
 
 interface User {
@@ -69,6 +70,12 @@ export class CommentService {
 
   deleteComment(commentId) {
     return this.http.delete(`${environment.url}/comments/${commentId}`, {
+      withCredentials: true
+    })
+  }
+
+  likeComment(commentId) {
+    return this.http.get<CommentResponse>(`${environment.url}/comments/${commentId}/like`, {
       withCredentials: true
     })
   }
