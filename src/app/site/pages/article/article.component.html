@@ -1,13 +1,16 @@
-<!-- <div (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })">222</div> -->
 <div class="article-container" *ngIf="article; else spinnerRef">
+  <button mat-button (click)="back()">
+    <mat-icon>chevron_left</mat-icon>
+      <span>Go Back</span>
+  </button>
   <div class="category" #myTopElement>Category: <span [routerLink]="['/term/category', article.category]" class="helper-highlight">{{ article.category }}</span></div>
   <div class="title">{{ article.title }}</div>
   <mat-divider></mat-divider>
-  <div class="like-wrap" *ngIf="isLike !== undefined && countComments !== undefined">
-    <div class="like" *ngIf="isLike !== undefined">
-      <button *ngIf="isLike !== undefined" (click)="likesArticle()" mat-icon-button>
-        <mat-icon *ngIf="isLike === false" class="favorite-border">favorite_border</mat-icon>
-        <mat-icon *ngIf="isLike === true" color="warn">favorite</mat-icon>
+  <div class="like-wrap" *ngIf="isLikeMe !== undefined && countComments !== undefined">
+    <div class="like" *ngIf="isLikeMe !== undefined">
+      <button *ngIf="isLikeMe !== undefined" (click)="likesArticle()" mat-icon-button>
+        <mat-icon *ngIf="isLikeMe === false" class="favorite-border">favorite_border</mat-icon>
+        <mat-icon *ngIf="isLikeMe === true" color="warn">favorite</mat-icon>
       </button>
       <span class="count">{{countLikes}}</span>
     </div>
@@ -15,7 +18,13 @@
       <mat-icon class="comment__icon">chat_bubble_outline</mat-icon>
       <span class="comment__count">{{countComments}}</span>
     </div>
-
+    <div class="view">
+      <button class="view__icon" disabled mat-icon-button>
+        <mat-icon>menu_book</mat-icon>
+        <!-- <mat-icon>visibility</mat-icon> -->
+      </button>
+      <span class="view__count" *ngIf="article.count">{{article.count}}</span>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div class="author">Author: <span [routerLink]="['/term/author', article.author]" class="helper-highlight">{{ article.author }}</span></div>

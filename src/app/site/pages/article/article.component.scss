@@ -157,6 +157,17 @@
   }
 }
 
+.view {
+  margin-left: 2rem;
+  &__icon {
+    
+  }
+
+  &__count {
+    margin-left: 0.4rem;
+  }
+}
+
 #comments {
   max-width: 760px;
   margin: 0 auto;

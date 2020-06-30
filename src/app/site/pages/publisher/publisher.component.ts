@@ -3,6 +3,7 @@ import { SiteService, Publisher } from '../../services/site.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'site-publisher',
@@ -11,6 +12,7 @@ import { Subject } from 'rxjs';
 })
 export class PublisherComponent implements OnInit {
   public publisher$ = new Subject<Publisher>();
+  public currentUser;
   public publisher;
   public articles;
   
@@ -21,6 +23,7 @@ export class PublisherComponent implements OnInit {
 
   constructor(
     private siteService: SiteService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
@@ -46,6 +49,14 @@ export class PublisherComponent implements OnInit {
       this.allResults = article.allResults;
       this.allPages = Math.ceil(article.allResults/this.limit);
     });
+
+    this.authService.user$.subscribe(user => {
+      this.currentUser = user;
+    })
+  }
+
+  back() {
+    this.router.navigate(['/publishers']);
   }
 
   prev() {

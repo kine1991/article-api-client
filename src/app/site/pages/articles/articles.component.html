@@ -3,7 +3,7 @@
   <div class="articles">
     <ng-container *ngFor="let article of articles">
       <mat-divider></mat-divider>
-      <site-card [article]="article"></site-card>
+      <site-card [article]="article" [currentUser]="currentUser"></site-card>
     </ng-container>
   </div>  
 </div>

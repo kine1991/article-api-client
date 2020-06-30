@@ -1,5 +1,6 @@
 .article {
   padding: 2rem 0;
+  position: relative;
 }
 
 .category {
@@ -115,3 +116,30 @@
     outline: 0;
   }
 }
+
+.action-wrap {
+  display: flex;
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem;
+
+  & mat-icon {
+    font-size: 18px;
+  }
+
+  &.action-wrap {
+    font-size: 14px;
+  }
+}
+
+
+// .zzz {
+//   display: flex;
+//   justify-content: space-between;
+
+//   font-size: 10px;
+// }
+
+// mat-icon {
+//   font-size: 10px;
+// }

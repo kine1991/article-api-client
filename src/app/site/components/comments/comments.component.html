@@ -2,7 +2,7 @@
   <mat-divider></mat-divider>
   <div class="ts-container">
     <h1 class="title">comments: <span>{{commentsCount}}</span></h1>
-    <div>
+    <div *ngIf="comments.length">
       <button mat-button [matMenuTriggerFor]="menu"> <mat-icon>sort</mat-icon> Sort By</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item [ngClass]="{'selected-date': selectedSort === 'new'}"  (click)="sortBy('new')">new comments first</button>

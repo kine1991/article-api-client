@@ -36,7 +36,6 @@ export class CommentsComponent implements OnInit {
     ).subscribe((data) => {
       this.isLoadedComment = true;
       this.comments = data.data.comments;
-      console.log('comments', data.data.comments);
       this.commentsCount = data.allResults;
       this.onGetCountComments.emit(data.allResults);
     });
