@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SiteService } from '../../services/site.service';
 import { switchMap } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'site-articles-by-author',
@@ -10,6 +11,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ArticlesByAuthorComponent implements OnInit {
   public articles;
+  public currentUser;
   public author;
 
   public limit = 20;
@@ -18,11 +20,16 @@ export class ArticlesByAuthorComponent implements OnInit {
 
   constructor(
     private siteService: SiteService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
 
   ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      this.currentUser = user;
+    });
+
     this.route.paramMap.pipe(
       switchMap((params: Params) => {
         console.log('params', params);

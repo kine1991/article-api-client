@@ -1,0 +1,12 @@
+<div class="home-container">
+  <h1 class="title">Random Articles</h1>
+
+  <div class="category-block" *ngFor="let category of categories">
+    <h2 class="category-title" [routerLink]="['/term/category', category]" >{{category}}</h2>
+    <div class="grid-card">
+      <ng-container *ngFor="let article of categoriesObj[category]">
+        <site-card-mini [article]="article"></site-card-mini>
+      </ng-container>
+    </div>
+  </div>
+</div>

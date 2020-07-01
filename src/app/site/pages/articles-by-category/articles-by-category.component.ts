@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params, NavigationExtras } from '@angular/route
 import { SiteService } from '../../services/site.service';
 import { switchMap, delay } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'site-articles-by-category',
@@ -11,6 +12,7 @@ import { EMPTY } from 'rxjs';
 })
 export class ArticlesByCategoryComponent implements OnInit {
   public articles;
+  public currentUser;
   public category;
   public isLoading = false;
   
@@ -22,9 +24,14 @@ export class ArticlesByCategoryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private siteService: SiteService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      this.currentUser = user;
+    });
+
     this.route.paramMap.pipe(
       switchMap((params: Params) => {
         this.isLoading = true

@@ -18,7 +18,7 @@
         <mat-icon *ngIf="article.likes.includes(currentUser._id) === false" class="favorite-border">favorite_border</mat-icon>
         <mat-icon *ngIf="article.likes.includes(currentUser._id) === true" color="warn">favorite</mat-icon>
       </button>
-      <button *ngIf="!currentUser" [routerLink]="['/sign-in']"  mat-icon-button>99
+      <button *ngIf="!currentUser" [routerLink]="['/sign-in']"  mat-icon-button>
         <mat-icon class="favorite-border">favorite_border</mat-icon>
       </button>
       <span class="count">{{article.likes ? article.likes.length : 0}}</span>

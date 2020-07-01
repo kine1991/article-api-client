@@ -1,0 +1,76 @@
+.card-mini-container {
+  height: 260px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.image-container {
+  height: 150px;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  padding: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  margin-left: 10px;
+}
+
+.content-container {
+  height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.description {
+  font-size: 12px;
+  height: 90px;
+  overflow: hidden;
+  padding: 0.3rem;
+  font-weight: 200;
+}
+
+.author-and-like {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 20px;
+  text-transform: uppercase;
+  color: gray;
+  font-size: 13px;
+  padding: 0.3rem;
+}
+
+mat-icon {
+  font-size: 16px;
+}
+
+.like-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.author {
+  transition: all 0.3s;
+  cursor: pointer;
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    color: orange;
+  }
+}

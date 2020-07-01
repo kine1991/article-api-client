@@ -64,8 +64,8 @@ export interface Article {
   imagesUrl?: string[] | [],
   private?: boolean,
   likes?: [string],
-  createdAt?: "2020-05-30T12:54:49.710Z"
-  updatedAt?: "2020-05-30T12:54:49.710Z"
+  createdAt?: Date
+  updatedAt?: Date
   _id?: string,
 }
 

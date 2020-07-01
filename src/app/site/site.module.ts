@@ -19,6 +19,8 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 import { DeleteCommentDialogComponent } from './components/delete-comment-dialog/delete-comment-dialog.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CardMiniComponent } from './components/card-mini/card-mini.component';
 
 
 
@@ -38,7 +40,7 @@ import { DeleteCommentDialogComponent } from './components/delete-comment-dialog
     SignUpComponent, 
     CommentsComponent, 
     CommentCardComponent, 
-    CommentCreateComponent, DeleteCommentDialogComponent,
+    CommentCreateComponent, DeleteCommentDialogComponent, HomeComponent, CardMiniComponent,
   ],
   imports: [
     CommonModule,
