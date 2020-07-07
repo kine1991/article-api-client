@@ -8,6 +8,7 @@ import { SettingsLayoutWithNavbarComponent } from './container/settings-layout-w
 import { SettingsMainComponent } from './pages/settings-main/settings-main.component';
 import { SettingsEditComponent } from './pages/settings-edit/settings-edit.component';
 import { SettingsChangePasswordComponent } from './pages/settings-change-password/settings-change-password.component';
+import { MyArticlesComponent } from './pages/my-articles/my-articles.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
+      {
+        path: '',
+        component: MyArticlesComponent
+      },
       {
         path: 'articles',
         component: ArticlesComponent

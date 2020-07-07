@@ -20,6 +20,7 @@ import { SettingsEditComponent } from './pages/settings-edit/settings-edit.compo
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SettingsChangePasswordComponent } from './pages/settings-change-password/settings-change-password.component';
+import { MyArticlesComponent } from './pages/my-articles/my-articles.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { SettingsChangePasswordComponent } from './pages/settings-change-passwor
     ArticlesComponent, 
     HeaderComponent, 
     SiteComponent, 
-    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent, SettingsLayoutWithNavbarComponent, AdminComponent, SettingsMainComponent, SettingsEditComponent, SettingsChangePasswordComponent
+    CardComponent, CreateArticleDialogComponent, ArticlesFilterDialogComponent, ArticlePreviewComponent, DeleteArticleDialogComponent, EditArticleDialogComponent, SettingsLayoutWithNavbarComponent, AdminComponent, SettingsMainComponent, SettingsEditComponent, SettingsChangePasswordComponent, MyArticlesComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

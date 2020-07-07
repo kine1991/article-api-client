@@ -1,0 +1,165 @@
+table {
+  width: 100%;
+}
+
+.image-container {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.image-url {
+  width: 100%;
+  height: 100%;
+}
+
+.author {
+  text-align: center;
+  padding: 1rem;
+}
+.autor-header {
+  text-align: center;
+  padding: 1rem;
+}
+.category {
+  text-align: center;
+  padding: 1rem;
+
+}
+.category-header {
+  text-align: center;
+  margin: 1rem;
+}
+.title {
+  min-width: 150px;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+  &:focus {
+    outline:0;
+  }
+}
+
+.title-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.created-at {
+  text-align: center;
+  padding: 1rem;
+
+}
+.created-at-header {
+  text-align: center;
+  margin: 1rem;
+}
+.edit {
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.remove-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.remove {
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.edit-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.edit {
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+}
+
+.view-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.view {
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all, 0.3s;
+  &:hover {
+    color: orange;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.edit-icon {
+  // transition: all, 0.3s;
+  // &:hover {
+  //   color: orange;
+  // }
+}
+
+// td {
+//   // background: rgb(84, 73, 95);
+//   // margin: 2rem;
+//   padding: 1rem;
+//   text-align: center;
+// }
+// th {
+//   padding: 1rem;
+//   text-align: center;
+// }
+
+.loading-container {
+  width: 100%;
+  height: calc(100vh - 64px - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-results {
+  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 36px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-create {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+}
+
+.filter-btn {
+  margin-right: 2rem;
+}

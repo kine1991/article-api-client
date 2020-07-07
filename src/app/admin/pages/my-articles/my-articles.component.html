@@ -1,0 +1,73 @@
+<div class="button-create">
+  <!-- mini-fab  mat-icon-button -->
+  <button (click)="filter()" class="filter-btn" mat-mini-fab color="default"><mat-icon>filter_alt</mat-icon></button>
+  <button (click)="create()" mat-raised-button color="primary">Create New Post</button>
+</div>
+<ng-container *ngIf="!isLoading && !articles.length;else existsRef">
+  <div class="no-results">Not Results</div>
+</ng-container>
+<ng-template #existsRef>
+  <table mat-table [dataSource]="articles" *ngIf="!isLoading">
+    <ng-container matColumnDef="imageUrl">
+      <th mat-header-cell *matHeaderCellDef> Photo </th>
+      <th mat-cell *matCellDef="let element" class="image-container">
+        <img [src]="element.imageUrl" [alt]="element.title" class="image-url">
+      </th>
+    </ng-container>
+  
+    <ng-container matColumnDef="author">
+      <th class="autor-header" mat-header-cell *matHeaderCellDef> Author </th>
+      <td class="author" mat-cell *matCellDef="let element"> {{element.author}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="category">
+      <th class="category-header" mat-header-cell *matHeaderCellDef> Category </th>
+      <td class="category" mat-cell *matCellDef="let element"> {{element.category}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+      <th class="category-header" mat-header-cell *matHeaderCellDef> Priority </th>
+      <td class="category" mat-cell *matCellDef="let element"> {{element.priority}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="title">
+      <th class="title-header" mat-header-cell *matHeaderCellDef> Title </th>
+      <td class="title" [routerLink]="['/admin/articles', element.id]" mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="createdAt">
+      <th class="created-at-header" mat-header-cell *matHeaderCellDef> createdAt </th>
+      <td class="created-at" mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd.MM.yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th class="edit-header" mat-header-cell *matHeaderCellDef> Edit </th>
+      <td class="edit" (click)="edit(element.id)" mat-cell *matCellDef="let element"> <mat-icon>edit</mat-icon> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remove">
+      <th class="remove-header" mat-header-cell *matHeaderCellDef> Remove </th>
+      <td class="remove" (click)="remove(element.id)" mat-cell *matCellDef="let element"> <mat-icon>delete</mat-icon> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <th class="view-header" mat-header-cell *matHeaderCellDef> View </th>
+      <td class="view" [routerLink]="['/admin/articles', element.id]" routerLinkActive="router-link-active"   mat-cell *matCellDef="let element"> <mat-icon>visibility</mat-icon> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="loading-container" *ngIf="isLoading">
+    <shared-spinner></shared-spinner>
+  </div>
+  <mat-paginator 
+    *ngIf="limit" 
+    [length]="limit"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 20, 50, 100]"
+    [pageIndex]="page - 1"
+    (page)="pageChange($event)">
+  </mat-paginator>
+</ng-template>
+

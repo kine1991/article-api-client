@@ -1,11 +1,11 @@
 <div class="card-mini-container">
   <div class="image-container">
     <img class="image" [src]="article.imageUrl" alt="article.title">
-    <div class="title" [ngStyle]="{ fontSize: getSize('title'), padding: article.title.length > 35 ? '2px': '10px' }">{{article.title.length > 90 ? (article.title.slice(0, 90) + '...') : article.title}}</div>
+    <div class="title" [routerLink]="['/articles', article._id]" [ngStyle]="{ fontSize: getSize('title'), padding: article.title.length > 35 ? '2px': '10px' }">{{article.title.length > 90 ? (article.title.slice(0, 90) + '...') : article.title}}</div>
   </div>
   <div class="content-container">
     <div class="description" [ngStyle]="{ fontSize: getSize('description') }">{{article.description.length > 170 ? (article.description.slice(0, 170) + '...') : article.description}}</div>
-    <div class="author-and-like">
+    <div class="author-container">
       <div [routerLink]="['/term/author', article.author]" class="author">{{article.author}}</div>
     </div>
   </div>

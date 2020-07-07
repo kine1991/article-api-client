@@ -14,7 +14,6 @@ export class CardMiniComponent implements OnInit {
   }
 
   getSize(item) {
-    console.log(item);
     if(item === 'description') {
       if(this.article.description.length > 170) return '11px'
       if(this.article.description.length >= 140 && this.article.description.length <= 170) return '12px'
