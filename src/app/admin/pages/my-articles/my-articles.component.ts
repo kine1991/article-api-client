@@ -85,7 +85,7 @@ export class MyArticlesComponent implements OnInit {
       },
     };
 
-    this.router.navigate(['/admin/articles'], navigationExtras);
+    this.router.navigate(['/admin'], navigationExtras);
   }
 
   create() {
@@ -142,7 +142,7 @@ export class MyArticlesComponent implements OnInit {
         },
       };
   
-      this.router.navigate(['/admin/articles'], navigationExtras);
+      this.router.navigate(['/admin'], navigationExtras);
     });
   }
 

@@ -9,6 +9,7 @@ import { ArticlesFilterDialogComponent } from '../../components/articles-filter-
 import { ResponsiveService } from '../../services/responsive.service';
 import { DeleteArticleDialogComponent } from '../../components/delete-article-dialog/delete-article-dialog.component';
 import { EditArticleDialogComponent } from '../../components/edit-article-dialog/edit-article-dialog.component';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-articles',
@@ -18,6 +19,7 @@ import { EditArticleDialogComponent } from '../../components/edit-article-dialog
 export class ArticlesComponent implements OnInit, OnDestroy {
   private widthWithoutSidebarSubscription: Subscription
   public articles = [];
+  public currentUser;
   public pageSize;
   public page = 1;
   public limit;
@@ -31,6 +33,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   // https://vk.com/images/camera_400.png?ava=1
   constructor(
     private articleService: ArticleService,
+    private authService: AuthService,
     private responsiveService: ResponsiveService,
     private router: Router,
     private route: ActivatedRoute,
@@ -56,6 +59,10 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      // console.log('user', user);
+      this.currentUser = user;
+    })
     this.fetchData();
 
     this.widthWithoutSidebarSubscription = this.responsiveService.currentWidthWithoutSidebar$.subscribe(currentWidthWithoutSidebar => {
@@ -137,6 +144,14 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   
       this.router.navigate(['/admin/articles'], navigationExtras);
     });
+  }
+
+  disabled(publisherId, type) {
+    if(type === 'edit') {
+      return this.currentUser._id !== publisherId;
+    } else if (type === 'delete') {
+      return !(this.currentUser._id === publisherId || this.currentUser.role === 'admin');
+    }
   }
 
   ngOnDestroy() {

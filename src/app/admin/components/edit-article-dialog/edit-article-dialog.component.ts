@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ArticleService } from '../../services/article.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-article-dialog',
@@ -57,8 +58,14 @@ export class EditArticleDialogComponent implements OnInit, OnDestroy {
           console.log('data', data);
           this.dialogRef.close('reload');
           this._snackBar.open('article was edited', 'close', { duration: 4000 });
+      }, error => {
+        if(error.status === 401) {
+          this._snackBar.open(error.error.errors[0].message, 'close', { duration: 4000 });
+        } else {
+          console.log('error', error);
+        }
       });
-      console.log(this.editArticleForm.value);
+      // console.log(this.editArticleForm.value);
     }
   }
 

@@ -24,7 +24,13 @@ export class DeleteArticleDialogComponent implements OnInit {
     this.articleService.deleteArticle(this.data.id).subscribe(() => {
       this.dialogRef.close('reload');
       this._snackBar.open('article was deleted', 'close', { duration: 4000 });
-      // console.log('id-: ', this.data.id);
+    }, error => {
+      if(error.status === 401) {
+        this._snackBar.open(error.error.errors[0].message, 'close', { duration: 4000 });
+      } else {
+        console.log('error ', error);
+      }
+
     });
   }
 
